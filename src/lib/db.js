@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import User from "../models/User";
 
 const uri = process.env.MONGODB_URI
-const client = new  MongoClient(uri)
+const client = new MongoClient(uri)
 
 async function connectDatabase() {
     try {
