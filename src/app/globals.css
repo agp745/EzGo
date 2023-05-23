@@ -23,11 +23,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
 .card {
   position: relative;
 }
-
 .card::before,
 .card::after {
   content: "";
