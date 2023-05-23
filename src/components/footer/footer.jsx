@@ -25,6 +25,15 @@ export const Footer = () => {
 
     return (
         <footer className="fixed bottom-0 left-0 right-0 text-sm">
+            <a href='https://github.com/agp745/EzGo' target='blank' className='fixed bottom-0 left-0 pb-2 pl-2'>
+                <Image 
+                    src={'/icons/white-github-icon.svg'}
+                    alt='github icon'
+                    width={24}
+                    height={24}
+                    className='fill-white'
+                />
+            </a>
             <div className="flex flex-row justify-center text-gray-500">
                 developed by&nbsp;
                 <Developer name={'Alex Perez'} image={'/images/portfolio-headshot.png'} link={alexPortfolio}/>&nbsp;&&nbsp;

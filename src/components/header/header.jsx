@@ -11,11 +11,11 @@ export const Header = () => {
             </div>
             <div className="RIGHT flex gap-4 text-sm font-semibold">
                 <button 
-                   className="bg-neutral-800 hover:bg-neutral-900 transition-colors duration-150 ease-in border border-solid border-neutral-400 rounded-md px-4 py-2 text-neutral-400">
+                   className="bg-neutral-800 hover:bg-neutral-900 transition-colors duration-150 ease-in border border-solid border-neutral-400 rounded-md px-4 py-2 text-neutral-400 active:scale-95">
                     <Link href={'/'}>login {'->'}</Link>
                 </button>
                 <button 
-                   className="card bg-white hover:bg-gray-200 after:blur-md after:animate-pulse border-1 transition-colors duration-150 ease-in text-neutral-950 rounded-md px-4 py-2">
+                   className="card bg-white hover:bg-gray-200 after:blur-md after:animate-pulse border-1 transition-colors duration-150 ease-in text-neutral-950 rounded-md px-4 py-2 after:hover:animate-none">
                     <Link href={'/'}>sign up</Link>
                 </button>
             </div>
