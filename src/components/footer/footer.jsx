@@ -1,10 +1,9 @@
-import * as Avatar from '@radix-ui/react-avatar'
 import Image from 'next/image'
 
 const Developer = ({name, image, link}) => {
     return (
         <a href={link} target='_blank'>
-        <div className='flex gap-1 hover:-translate-y-1 transition-transform duration-100 ease-in mb-2'>
+        <div className='flex gap-1 hover:-translate-y-1 transition-transform duration-100 ease-in mb-2 px-1'>
             <Image 
                 src={image} 
                 alt={name} 
@@ -22,13 +21,14 @@ const Developer = ({name, image, link}) => {
 export const Footer = () => {
 
     const alexPortfolio = 'https://alexgp-portfolio.vercel.app/'
+    const noahGithub = 'https://github.com/NoahW52'
 
     return (
         <footer className="fixed bottom-0 left-0 right-0 text-sm">
             <div className="flex flex-row justify-center text-gray-500">
                 developed by&nbsp;
                 <Developer name={'Alex Perez'} image={'/images/portfolio-headshot.png'} link={alexPortfolio}/>&nbsp;&&nbsp;
-                {/* <Developer name={'Noah Wright'} image={'/images/noah-headshot.jpg'}/> */}
+                <Developer name={'Noah Wright'} image={'/images/noah-headshot.png'} link={noahGithub}/>
             </div>
         </footer>
     )
