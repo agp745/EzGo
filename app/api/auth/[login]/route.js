@@ -1,4 +1,4 @@
-import { connectDatabase } from "@/app/lib/db";
+import { connectDatabase, User } from "@/app/lib/db";
 import NextAuth from "next-auth/next";
 
 const handler = NextAuth({
