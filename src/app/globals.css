@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+
+  --color-1: #ee0909;
+  --color-2: #fae105;
+  --color-3: #07e412;
+  --color-4: #05f5e9;
+  --color-5: #ec09f4;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+.card {
+  position: relative;
+}
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -1px;
+  background: linear-gradient(
+    0deg,
+    var(--color-3),
+    var(--color-4),
+    var(--color-5)
+  );
+  border-radius: inherit;
+}
+
+.card::after {
+  filter: blur(30rem);
+}
+
+.svg-path {
+  fill: white;
+}
