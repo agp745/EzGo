@@ -48,3 +48,15 @@ body {
 .svg-path {
   fill: white;
 }
+
+/* .DISABLED {
+  position: relative;
+}
+
+.DISABLED::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: inherit;
+} */
