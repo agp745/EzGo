@@ -42,5 +42,9 @@ body {
 }
 
 .card::after {
-  filter: blur(10rem);
+  filter: blur(30rem);
+}
+
+.svg-path {
+  fill: white;
 }
