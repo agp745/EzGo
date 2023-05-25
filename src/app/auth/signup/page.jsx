@@ -46,7 +46,7 @@ function TextForm() {
 
     return (
         <form action="" className="flex flex-col justify-center items-start mt-5">
-            <label htmlFor="email" className="text-gray-500 text-sm">Email</label>
+            <label htmlFor="email" className="text-neutral-500 text-sm mb-2">Email</label>
             <input 
                 id="email"
                 type="email" 
@@ -54,9 +54,9 @@ function TextForm() {
                 placeholder="example@email.com" 
                 value={credentails.email} 
                 onChange={handleInput}
-                className="w-full px-3 py-2 rounded-md text-black text-sm"
+                className="w-full bg-neutral-900 border-[0.5px] focus:outline focus:outline-neutral-500 focus:outline-2 border-neutral-500 transition-all duration-100 ease-in px-3 py-2 rounded-md text-neutral-400 placeholder-neutral-500 text-sm"
             />
-            <label htmlFor="password" className="text-gray-500 text-sm">Password</label>
+            <label htmlFor="password" className="text-neutral-500 text-sm mt-6 mb-2">Password</label>
             <input 
                 id="password"
                 type="password" 
@@ -64,12 +64,12 @@ function TextForm() {
                 placeholder="•••••••••••••••" 
                 value={credentails.password} 
                 onChange={handleInput}
-                className="w-full px-3 py-2 rounded-md text-black text-sm"
+                className="w-full bg-neutral-900 border-[0.5px] focus:outline focus:outline-neutral-500 focus:outline-2 border-neutral-500 transition-all duration-100 ease-in px-3 py-2 rounded-md text-neutral-400 placeholder-neutral-500 text-sm"
             />
             {isDisabled ? (
                 <button 
                     onClick={handleClick}
-                    className="DISABLED mt-4 bg-white brightness-75 transition-all duration-100 ease-in rounded-md py-2 px-3 w-full text-sm text-black font-semibold hover:cursor-not-allowed"
+                    className="DISABLED mt-8 bg-white brightness-75 transition-all duration-100 ease-in rounded-md py-2 px-3 w-full text-sm text-black font-semibold hover:cursor-not-allowed"
                     disabled
                 >
                     Create Account
@@ -77,7 +77,7 @@ function TextForm() {
             ) : (
                 <button 
                     onClick={handleClick}
-                    className="mt-4 bg-white transition-all duration-100 ease-in rounded-md py-2 px-3 w-full text-sm text-black font-semibold"
+                    className="mt-8 bg-white transition-all duration-100 ease-in rounded-md py-2 px-3 w-full text-sm text-black font-semibold"
                 >
                     Create Account
                 </button>
@@ -92,9 +92,9 @@ export default function SignIn() {
         <main className="w-full h-full flex items-center justify-center mt-40">
             <section className="CONTAINER w-[30rem] h-full">
                 <HomeButton />
-                <div className="flex flex-col items-start w-full">
+                <div className="flex flex-col items-start w-full mb-12">
                     <h1 className="text-xl font-semibold">Create an EzGo account</h1>
-                    <div className="text-md font-light text-neutral-400">Already have an account? <span className="text-blue-500">Log in.</span></div>
+                    <div className="text-md font-light text-neutral-400 mt-2">Already have an account? <span className="text-blue-500">Log in.</span></div>
                 </div>
                 <TextForm />
                 <div className="flex items-center justify-center gap-2 before:block before:w-[47%] before:h-px before:bg-white after:block after:w-[47%] after:h-px after:bg-white my-7">
