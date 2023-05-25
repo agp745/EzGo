@@ -1,13 +1,14 @@
-"use client"
-import { DisplayMap } from "@/src/components/map"
-
+"use client";
+import { DisplayMap } from "@/src/components/map";
+import GeolocationComponent from "@/src/components/map/geo";
 
 export default function viewMap() {
-    return (
-        <main>
-            <h1>hello world</h1>
-            <DisplayMap />
-        </main>
-    )
+  return (
+    <main>
+      <input type="text" placeholder="Location" />
+      <button className="box-border">Search</button>
+      <DisplayMap />
+      <GeolocationComponent />
+    </main>
+  );
 }
-
