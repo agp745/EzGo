@@ -7,11 +7,13 @@ import Link from "next/link"
 function HomeButton() {
     return (
         <div className="fixed top-0 left-0 ml-2 mt-2 text-sm">
-            <button 
-                className="bg-neutral-800 hover:bg-neutral-900 transition-colors duration-150 ease-in border border-solid border-neutral-400 rounded-md px-4 py-2 text-neutral-400 font-light active:scale-95"
-            >
-                <Link href={'/'}>{'<-'} home</Link>
-            </button>
+            <Link href={'/'}>
+                <button 
+                    className="bg-neutral-800 hover:bg-neutral-900 transition-colors duration-150 ease-in border border-solid border-neutral-400 rounded-md px-4 py-2 text-neutral-400 font-light active:scale-95"
+                >
+                    <div>{'<-'} home</div>
+                </button>
+            </Link>
         </div>
     )
 }

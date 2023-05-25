@@ -6,16 +6,20 @@ import { useSession, signOut } from "next-auth/react"
 const SignedOut = () => {
     return (
         <div className="RIGHT flex gap-4 text-sm">
+            <Link href={'/auth/signup?callbackUrl=/'}>
                 <button 
                     className="bg-neutral-800 hover:bg-neutral-900 transition-colors duration-150 ease-in border border-solid border-neutral-400 rounded-md px-4 py-2 text-neutral-400 font-light active:scale-95"
                 >
-                    <Link href={'/'}>login {'->'}</Link>
+                   <div>login {'->'}</div>
                 </button>
+            </Link>
+            <Link href={'/auth/signup?callbackUrl=/'}>
                 <button 
                     className="card bg-white hover:bg-gray-200 after:blur-md after:animate-pulse border-1 transition-colors duration-150 ease-in text-neutral-950 font-semibold rounded-md px-4 py-2 after:hover:animate-none"
                 >
-                    <Link href={'/auth/signup?callbackUrl=/'}>sign up</Link>
+                    <div>sign up</div>
                 </button>
+            </Link>
         </div>
     )
 }
