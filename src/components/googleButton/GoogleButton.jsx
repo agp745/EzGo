@@ -12,7 +12,7 @@ export const GoogleButton = () => {
     return (
         <button
             onClick={() => signIn('google', {callbackUrl})}
-            className='flex justify-center relative w-full px-3 py-2 bg-neutral-900 border-[0.5px] focus:border-2 border-neutral-500 transition-all duration-100 ease-in rounded-md text-neutral-400 placeholder-neutral-500 text-sm'
+            className='flex justify-center relative w-full px-3 py-2 bg-neutral-900 hover:bg-neutral-800 border-[0.5px] focus:outline-2 border-neutral-500 transition-all duration-100 ease-in rounded-md text-neutral-400 placeholder-neutral-500 text-sm'
         >
             <Image 
                 src={'/icons/google-icon.svg'}

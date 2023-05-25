@@ -6,7 +6,7 @@ import { useSession, signOut } from "next-auth/react"
 const SignedOut = () => {
     return (
         <div className="RIGHT flex gap-4 text-sm">
-            <Link href={'/auth/signup?callbackUrl=/'}>
+            <Link href={'/auth/login?callbackUrl=/'}>
                 <button 
                     className="bg-neutral-800 hover:bg-neutral-900 transition-colors duration-150 ease-in border border-solid border-neutral-400 rounded-md px-4 py-2 text-neutral-400 font-light active:scale-95"
                 >

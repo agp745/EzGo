@@ -25,7 +25,7 @@ function TextForm() {
     const [isDisabled, setIsDisabled] = useState(true)
 
     useEffect(() => {
-        if ( credentails.email.length > 0 && credentails.password.length > 0) {
+        if ( credentails.email.length > 0) {
             setIsDisabled(false)
         } else {
             setIsDisabled(true)
@@ -41,7 +41,7 @@ function TextForm() {
     }
 
     const handleClick = () => {
-        alert(`${credentails.email}, ${credentails.password}`)
+        alert(`${credentails.email}`)
     }
 
     return (
@@ -53,16 +53,6 @@ function TextForm() {
                 name="email" 
                 placeholder="example@email.com" 
                 value={credentails.email} 
-                onChange={handleInput}
-                className="w-full bg-neutral-900 border-[0.5px] focus:outline focus:outline-neutral-500 focus:outline-2 border-neutral-500 transition-all duration-100 ease-in px-3 py-2 rounded-md text-neutral-400 placeholder-neutral-500 text-sm"
-            />
-            <label htmlFor="password" className="text-neutral-500 text-sm mt-6 mb-2">Password</label>
-            <input 
-                id="password"
-                type="password" 
-                name="password" 
-                placeholder="•••••••••••••••" 
-                value={credentails.password} 
                 onChange={handleInput}
                 className="w-full bg-neutral-900 border-[0.5px] focus:outline focus:outline-neutral-500 focus:outline-2 border-neutral-500 transition-all duration-100 ease-in px-3 py-2 rounded-md text-neutral-400 placeholder-neutral-500 text-sm"
             />
@@ -86,20 +76,20 @@ function TextForm() {
     )
 }
 
-export default function SignUp() {
+export default function Login() {
 
     return (
         <main className="w-full h-full flex items-center justify-center mt-40">
             <section className="CONTAINER w-[30rem] h-full">
                 <HomeButton />
                 <div className="flex flex-col items-start w-full mb-12">
-                    <h1 className="text-xl font-semibold">Create an EzGo account</h1>
-                    <div className="text-md font-light text-neutral-400 mt-2">Already have an account?&nbsp;
+                    <h1 className="text-xl font-semibold">Log in to EzGo</h1>
+                    <div className="text-md font-light text-neutral-400 mt-2">Don't have an account?&nbsp;
                         <Link 
-                            href='/auth/login'
+                            href='/auth/signup' 
                             className="text-blue-500 hover:brightness-125 transition-all duration-100 ease-in"
                         >
-                            Log in.
+                            Sign Up.
                         </Link>
                     </div>
                 </div>
