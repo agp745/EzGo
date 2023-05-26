@@ -62,14 +62,14 @@ function TextForm() {
                     className="DISABLED mt-8 bg-white brightness-75 transition-all duration-100 ease-in rounded-md py-2 px-3 w-full text-sm text-black font-semibold hover:cursor-not-allowed"
                     disabled
                 >
-                    Create Account
+                    continue {'->'}
                 </button>
             ) : (
                 <button 
                     onClick={handleClick}
                     className="mt-8 bg-white transition-all duration-100 ease-in rounded-md py-2 px-3 w-full text-sm text-black font-semibold"
                 >
-                    Create Account
+                    continue {'->'}
                 </button>
             )}
         </form>
