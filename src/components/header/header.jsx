@@ -2,6 +2,8 @@
 
 import Link from "next/link"
 import { useSession, signOut } from "next-auth/react"
+import { useEffect } from "react"
+import axios from "axios"
 
 const SignedOut = () => {
     return (
@@ -40,7 +42,20 @@ const SignedIn = () => {
 export const Header = () => {
 
     const { data: session } = useSession()
-    // console.log(session)
+
+    useEffect(() => {
+        console.log(session)
+        
+        if(session) {
+            fetchUser('email@email.com')
+        }
+    }, [session])
+
+    const fetchUser = async (email) => {
+        // const { data } = await axios.post('/api/user/oauth', session.user.email)
+        const data = await axios.post('/api/user/oauth', email)
+        console.log(data)
+    }
 
     const github = '/icons/github-icon.svg'
 

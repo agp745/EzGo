@@ -20,13 +20,13 @@ export default function Home() {
             <div>Check Savings</div>
             <div>$</div>
           </button>
-          </Link>
-          <Link href={'/'}>
+        </Link>
+        <Link href={'/'}>
           <button className="flex gap-2 bg-white hover:bg-neutral-200 transition-colors duration-75 ease-in px-4 py-2 rounded-md active:scale-95">
             <div>Plan a route</div>
             <Image src={'/icons/route-icon.svg'} alt="route icon" width={20} height={20}/>
           </button>
-          </Link>
+        </Link>
         </div>
       </section>
       <Footer />
