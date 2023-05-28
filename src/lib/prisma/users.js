@@ -2,7 +2,7 @@ import prisma from ".";
 
 export async function getUsers() {
     try {
-        const users = await prisma.user.findMany({})
+        const users = await prisma.userCredentials.findMany({})
         return { users }
     } catch (error) {
         return { error }
@@ -11,7 +11,7 @@ export async function getUsers() {
 
 export async function createUser(user) {
     try {
-        const savedUser = await prisma.user.create({data: user})
+        const savedUser = await prisma.userCredentials.create({data: user})
         return { savedUser }
     } catch (error) {
         return { error }
@@ -20,7 +20,7 @@ export async function createUser(user) {
 
 export async function deleteUser(userId) {
     try {
-        const deletedUser = await prisma.user.delete({
+        const deletedUser = await prisma.userCredentials.delete({
             where: {
                 id: userId
             }
