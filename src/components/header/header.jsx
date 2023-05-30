@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useSession, signOut } from "next-auth/react"
 import { useEffect } from "react"
+import { UserAvatar } from "../avatar"
 import axios from "axios"
 
 const SignedOut = () => {
@@ -26,15 +27,10 @@ const SignedOut = () => {
     )
 }
 
-const SignedIn = () => {
+const SignedIn = ({ session }) => {
     return (
         <div className="RIGHT flex gap-4 text-sm">
-            <button 
-                className="bg-neutral-800 hover:bg-neutral-900 transition-colors duration-150 ease-in border border-solid border-neutral-400 rounded-md px-4 py-2 text-neutral-400 font-light active:scale-95"
-                onClick={() => signOut()}    
-            >
-                sign out {'->'}
-            </button>
+            <UserAvatar session={session}/>
         </div>
     )
 }
@@ -46,16 +42,7 @@ export const Header = () => {
     useEffect(() => {
         console.log(session)
         
-        if(session) {
-            fetchUser('email@email.com')
-        }
     }, [session])
-
-    const fetchUser = async (email) => {
-        // const { data } = await axios.post('/api/user/oauth', session.user.email)
-        const data = await axios.post('/api/user/oauth', email)
-        console.log(data)
-    }
 
     const github = '/icons/github-icon.svg'
 
@@ -64,7 +51,7 @@ export const Header = () => {
             <div className="LEFT">
                 <h1 className="text-3xl font-semibold">EZGO</h1>
             </div>
-            {session ? <SignedIn /> : <SignedOut />}
+            {session ? <SignedIn session={session} /> : <SignedOut />}
         </section>
     )
 }
