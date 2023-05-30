@@ -39,10 +39,10 @@ export const Header = () => {
 
     const { data: session } = useSession()
 
-    useEffect(() => {
-        console.log(session)
+    // useEffect(() => {
+    //     console.log(session)
         
-    }, [session])
+    // }, [session])
 
     const github = '/icons/github-icon.svg'
 
