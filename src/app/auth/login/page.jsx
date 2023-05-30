@@ -97,7 +97,7 @@ export default function Login() {
                 <div className="flex items-center justify-center gap-2 before:block before:w-[47%] before:h-px before:bg-white after:block after:w-[47%] after:h-px after:bg-white my-7">
                     or
                 </div>
-                <GoogleButton />
+                <GoogleButton action={'Log in'}/>
             </section>
         </main>
     )

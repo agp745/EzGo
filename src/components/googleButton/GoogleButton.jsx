@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 
-export const GoogleButton = () => {
+export const GoogleButton = ({action}) => {
 
     const searchParams = useSearchParams()
     const callbackUrl = searchParams.get('callbackUrl')
@@ -22,7 +22,7 @@ export const GoogleButton = () => {
                 className='absolute left-3 top-[6px]'
             />
             <div className='font-thin'>
-                Sign up with <span className='font-semibold'>Google</span>
+                {action} with <span className='font-semibold'>Google</span>
             </div>
         </button>
     )
