@@ -1,14 +1,13 @@
-"use client";
+"use client"
 import { DisplayMap } from "@/src/components/map";
-import GeolocationComponent from "@/src/components/map/geo";
+import Geo from "@/src/components/map/geo";
+import { Sidebar } from "@/src/components/sidebar";
 
 export default function viewMap() {
   return (
-    <main>
-      <input type="text" placeholder="Location" />
-      <button className="box-border">Search</button>
+    <main className="flex">
+      <Sidebar />
       <DisplayMap />
-      <GeolocationComponent />
     </main>
-  );
+  )
 }
