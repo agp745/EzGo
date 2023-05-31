@@ -45,6 +45,23 @@ body {
   filter: blur(30rem);
 }
 
-.svg-path {
-  fill: white;
+input:active,
+input:focus {
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* Add any other necessary reset styles */
 }
+
+/* .DISABLED {
+  position: relative;
+}
+
+.DISABLED::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: inherit;
+} */
