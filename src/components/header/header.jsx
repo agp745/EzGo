@@ -1,10 +1,9 @@
 'use client'
 
 import Link from "next/link"
-import { useSession, signOut } from "next-auth/react"
-import { useEffect } from "react"
+import Image from "next/image"
+import { useSession } from "next-auth/react"
 import { UserAvatar } from "../avatar"
-import axios from "axios"
 
 const SignedOut = () => {
     return (
@@ -39,17 +38,15 @@ export const Header = () => {
 
     const { data: session } = useSession()
 
-    // useEffect(() => {
-    //     console.log(session)
-        
-    // }, [session])
-
-    const github = '/icons/github-icon.svg'
-
     return (
         <section className="flex justify-between p-8">
             <div className="LEFT">
-                <h1 className="text-3xl font-semibold">EZGO</h1>
+                <Image 
+                    src={'/icons/logo-no-background.png'}
+                    alt="EzGo logo"
+                    width={150}
+                    height={150}
+                />
             </div>
             {session ? <SignedIn session={session} /> : <SignedOut />}
         </section>
