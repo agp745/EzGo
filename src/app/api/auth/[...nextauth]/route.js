@@ -19,7 +19,7 @@ const handler = NextAuth({
   pages: {
     signIn: '/auth/signup'
   },
-  debug: true
+  // debug: true
 })
 
 export { handler as GET, handler as POST }
