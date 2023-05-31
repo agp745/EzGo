@@ -1,1 +1,1 @@
-export * from './avatarPopover'
+export * from './AvatarPopover'
