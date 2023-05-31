@@ -3,6 +3,7 @@
 import { GoogleButton } from "@/src/components/googleButton"
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { signIn } from "next-auth/react"
 
 function HomeButton() {
     return (
@@ -17,32 +18,17 @@ function HomeButton() {
 }
 
 function TextForm() {
-    const [credentails, setCredentials] = useState({
-        email: '',
-        password: ''
-    })
+    const [email, setEmail] = useState('')
 
     const [isDisabled, setIsDisabled] = useState(true)
 
     useEffect(() => {
-        if ( credentails.email.length > 0) {
+        if ( email.length > 0) {
             setIsDisabled(false)
         } else {
             setIsDisabled(true)
         }
-    }, [credentails])
-
-    const handleInput = (e) => {
-        const { name, value } = e.target
-        setCredentials({
-            ...credentails,
-            [name]: value
-        })
-    }
-
-    const handleClick = () => {
-        alert(`${credentails.email}`)
-    }
+    }, [email])
 
     return (
         <form action="" className="flex flex-col justify-center items-start mt-5">
@@ -51,14 +37,13 @@ function TextForm() {
                 id="email"
                 type="email" 
                 name="email" 
-                placeholder="example@email.com" 
-                value={credentails.email} 
-                onChange={handleInput}
+                placeholder="example@dev.com" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-neutral-900 border-[0.5px] focus:outline focus:outline-neutral-500 focus:outline-2 border-neutral-500 transition-all duration-100 ease-in px-3 py-2 rounded-md text-neutral-400 placeholder-neutral-500 text-sm"
             />
             {isDisabled ? (
                 <button 
-                    onClick={handleClick}
                     className="DISABLED mt-8 bg-white brightness-75 transition-all duration-100 ease-in rounded-md py-2 px-3 w-full text-sm text-black font-semibold hover:cursor-not-allowed"
                     disabled
                 >
@@ -66,7 +51,7 @@ function TextForm() {
                 </button>
             ) : (
                 <button 
-                    onClick={handleClick}
+                    onClick={() => signIn('email', {email})}
                     className="mt-8 bg-white transition-all duration-100 ease-in rounded-md py-2 px-3 w-full text-sm text-black font-semibold"
                 >
                     continue {'->'}

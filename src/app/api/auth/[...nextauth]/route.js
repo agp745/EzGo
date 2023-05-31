@@ -11,11 +11,15 @@ const handler = NextAuth({
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET
     }),
+    EmailProvider({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    })
   ],
   pages: {
     signIn: '/auth/signup'
   },
-  // debug: true
+  debug: true
 })
 
 export { handler as GET, handler as POST }
