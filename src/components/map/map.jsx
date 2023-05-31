@@ -26,5 +26,3 @@ function Map() {
     </GoogleMap>
     )
 }
-
-
