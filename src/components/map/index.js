@@ -1,2 +1,2 @@
 export * from './map'
-export * from './PlacesAutoComplete'
+export * from './PlacesAutocomplete'

@@ -50,7 +50,11 @@ export const PlacesAutocomplete = () => {
         } = suggestion;
   
         return (
-          <li key={place_id} onClick={handleSelect(suggestion)}>
+          <li 
+            key={place_id} 
+            onClick={handleSelect(suggestion)}
+            className="text-black"
+          >
             <strong>{main_text}</strong> <small>{secondary_text}</small>
           </li>
         );

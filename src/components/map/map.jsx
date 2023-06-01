@@ -3,7 +3,7 @@
 import { useMemo, useState, useEffect } from "react"
 import { GoogleMap, useLoadScript, Marker, LoadScriptNext } from "@react-google-maps/api"
 import { useSelector } from "react-redux"
-import { PlacesAutocomplete } from "."
+import { Sidebar } from "../sidebar"
 
 function Map({ userLocation }) {
 
@@ -43,8 +43,8 @@ export function DisplayMap() {
     if (loadError) return <div>Failed to load Google Maps API</div>
     if (isLoaded && !isLoading) return (
         <>
+            <Sidebar />
             <Map userLocation={coordinates} />
-            <PlacesAutocomplete />
         </>
     )
     return <div>Loading...</div>
