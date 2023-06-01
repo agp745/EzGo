@@ -6,6 +6,8 @@ import { useSelector } from "react-redux"
 
 function Map( {center} ) {
 
+    console.log(center)
+
     return (
     <GoogleMap
         zoom={10}
@@ -19,7 +21,7 @@ function Map( {center} ) {
 
 export function DisplayMap() {
 
-    const { coordinates } = useSelector((state) => state.location)
+    const { coordinates, isLoading } = useSelector((state) => state.location)
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -33,7 +35,7 @@ export function DisplayMap() {
     }, [loadError])
 
     if (loadError) return <div>Failed to load Google Maps API</div>
-    if (!isLoaded) return <div>Loading...</div>
+    if (!isLoaded && isLoading ) return <div>Loading...</div>
     return <Map center={coordinates} />
 }
 

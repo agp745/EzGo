@@ -1,12 +1,6 @@
 'use client';
 
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { geolocator } from "../../utils/geolocator";
-
-export const fetchCoordinates = createAsyncThunk('location/fetchCoordinates', async () => {
-    const { location, error } = await geolocator()
-    return { location, error }
-})
+import { createSlice } from "@reduxjs/toolkit";
 
 const locationSlice = createSlice({
     name: 'location',
@@ -21,22 +15,14 @@ const locationSlice = createSlice({
     reducers: {
         setCoordinates: (state, action) => {
             state.coordinates = action.payload
-        }
-    }, extraReducers: {
-        [fetchCoordinates.pending]: (state) => {
+            state.isLoading = false
+        },
+        startLoading: (state) => {
             state.isLoading = true
-        },
-        [fetchCoordinates.fulfilled]: (state, action) => {
-            state.coordinates = action.payload.location
-            state.isLoading = false
-        },
-        [fetchCoordinates.rejected]: (state, action) => {
-            state.error = action.payload.error
-            state.isLoading = false
         }
     }
 })
 
-export const { setCoordinates } = locationSlice.actions
+export const { setCoordinates, startLoading } = locationSlice.actions
 
 export default locationSlice.reducer
