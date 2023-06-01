@@ -1,8 +1,9 @@
 'use client'
 
 import { useMemo, useState, useEffect } from "react"
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
+import { GoogleMap, useLoadScript, Marker, LoadScriptNext } from "@react-google-maps/api"
 import { useSelector } from "react-redux"
+import { PlacesAutocomplete } from "."
 
 function Map({ userLocation }) {
 
@@ -30,7 +31,7 @@ export function DisplayMap() {
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries
+        libraries,
     })
 
     useEffect(() => {
@@ -40,7 +41,12 @@ export function DisplayMap() {
     }, [loadError])
 
     if (loadError) return <div>Failed to load Google Maps API</div>
-    if (isLoaded && !isLoading) return <Map userLocation={coordinates} />
+    if (isLoaded && !isLoading) return (
+        <>
+            <Map userLocation={coordinates} />
+            <PlacesAutocomplete />
+        </>
+    )
     return <div>Loading...</div>
 }
 

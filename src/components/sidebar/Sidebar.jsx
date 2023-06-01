@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { useState } from "react"
-import PlacesAutocomplete from "../map/autoFinish"
+import PlacesAutocomplete from "../map/PlacesAutoComplete"
 
 export function Sidebar() {
 

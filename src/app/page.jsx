@@ -1,6 +1,5 @@
 import { Header } from "../components/header"
 import { Footer } from "../components/footer"
-import { GetLocation } from "../components/getLocation"
 import { MenuButtons } from "../components/menuButtons"
 
 
@@ -9,7 +8,6 @@ export default function Home() {
   
   return (
     <main>
-      <GetLocation />
       <Header/>
       <section className="flex justify-center mt-20 text-center">
         <div className="WRAPPER max-w-3xl flex flex-col items-center gap-1">

@@ -2,7 +2,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocom
 import useOnclickOutside from "react-cool-onclickoutside";
 
 
-const PlacesAutocomplete = () => {
+export const PlacesAutocomplete = () => {
 
     const {
       ready,
@@ -70,5 +70,3 @@ const PlacesAutocomplete = () => {
       </div>
     );
   };
-
-  export default PlacesAutocomplete

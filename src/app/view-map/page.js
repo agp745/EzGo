@@ -1,14 +1,14 @@
 "use client"
 import { DisplayMap } from "@/src/components/map";
 import { Sidebar } from "@/src/components/sidebar";
-import PlacesAutocomplete from "@/src/components/map/autoFinish";
+import PlacesAutocomplete from "@/src/components/map/PlacesAutoComplete";
 
 export default function viewMap() {
   return (
     <main className="flex">
       <Sidebar />
       <DisplayMap />
-      <PlacesAutocomplete />
+      {/* <PlacesAutocomplete /> */}
     </main>
   )
 }
