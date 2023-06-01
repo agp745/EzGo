@@ -1,14 +1,20 @@
 'use client';
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+// export const fetchUserCoordinates = createAsyncThunk('location/fetchUserCoordinates', async () => {
+//     const response = await axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.NEXT_PUBLIC_IP_GEOLOCATION_API_KEY}`)
+//     console.log(response)
+// })
 
 const locationSlice = createSlice({
     name: 'location',
     initialState: {
         isLoading: false,
         coordinates: {
-            lat: 0,
-            lng: 0,
+            lat: 44,
+            lng: -80,
         },
         error: null
     },
@@ -20,7 +26,7 @@ const locationSlice = createSlice({
         startLoading: (state) => {
             state.isLoading = true
         }
-    }
+    },
 })
 
 export const { setCoordinates, startLoading } = locationSlice.actions

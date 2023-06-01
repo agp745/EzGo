@@ -4,20 +4,25 @@ import { useMemo, useState, useEffect } from "react"
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import { useSelector } from "react-redux"
 
-function Map( {center} ) {
+function Map({ userLocation }) {
 
-    console.log(center)
+    const test = {
+        lat: 44,
+        lng: -80,
+    }
 
     return (
     <GoogleMap
-        zoom={10}
-        center={center}
+        zoom={14}
+        center={userLocation}
         mapContainerClassName="w-full h-screen"
     >
-        <Marker position={center} />
+        <Marker position={userLocation} />
     </GoogleMap>
     )
 }
+
+const libraries = ['places']
 
 export function DisplayMap() {
 
@@ -25,7 +30,7 @@ export function DisplayMap() {
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries: ["places"]
+        libraries
     })
 
     useEffect(() => {
@@ -35,7 +40,7 @@ export function DisplayMap() {
     }, [loadError])
 
     if (loadError) return <div>Failed to load Google Maps API</div>
-    if (isLoading) return <div>Loading...</div>
-    return <Map center={coordinates} />
+    if (isLoaded && !isLoading) return <Map userLocation={coordinates} />
+    return <div>Loading...</div>
 }
 
