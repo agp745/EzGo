@@ -35,7 +35,7 @@ export function DisplayMap() {
     }, [loadError])
 
     if (loadError) return <div>Failed to load Google Maps API</div>
-    if (!isLoaded && isLoading ) return <div>Loading...</div>
+    if (isLoading) return <div>Loading...</div>
     return <Map center={coordinates} />
 }
 
