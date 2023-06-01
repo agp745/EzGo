@@ -3,6 +3,7 @@
 import { GoogleButton } from "@/src/components/googleButton"
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { signIn } from "next-auth/react"
 
 function HomeButton() {
@@ -68,7 +69,13 @@ export default function Login() {
             <section className="CONTAINER w-[30rem] h-full">
                 <HomeButton />
                 <div className="flex flex-col items-start w-full mb-12">
-                    <h1 className="text-xl font-semibold">Log in to EzGo</h1>
+                    <Image 
+                        src={'/icons/logo-only.png'}
+                        alt={'EzGo logo'}
+                        width={35}
+                        height={35}
+                    />
+                    <h1 className="text-xl font-semibold mt-5">Log in to EzGo</h1>
                     <div className="text-md font-light text-neutral-400 mt-2">Don't have an account?&nbsp;
                         <Link 
                             href='/auth/signup' 
