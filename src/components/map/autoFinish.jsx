@@ -1,7 +1,9 @@
-import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete"
-import useOnclickOutside from "react-cool-onclickoutside"
+import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
+import useOnclickOutside from "react-cool-onclickoutside";
+
 
 const PlacesAutocomplete = () => {
+
     const {
       ready,
       value,
@@ -59,7 +61,7 @@ const PlacesAutocomplete = () => {
         <input
           value={value}
           onChange={handleInput}
-        //   disabled={!ready}
+          disabled={!ready}
           placeholder="Enter start location"
           className="text-slate-950"
         />
