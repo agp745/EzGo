@@ -6,7 +6,6 @@ import PlacesAutocomplete from "@/src/components/map/autoFinish";
 export default function viewMap() {
   return (
     <main className="flex">
-      <PlacesAutocomplete />
       <Sidebar />
       <DisplayMap />
     </main>

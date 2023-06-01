@@ -4,21 +4,7 @@ import { useMemo, useState, useEffect } from "react"
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import { useSelector } from "react-redux"
 
-export function DisplayMap() {
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries: ["places"]
-    })
-
-    if (!isLoaded) return <div>Loading...</div>
-    return <Map />
-}
-
-function Map() {
-
-    const center = useMemo(() => 
-    ({ lat: 44, lng: -80 }), 
-    [])
+function Map( {center} ) {
 
     return (
     <GoogleMap
@@ -36,7 +22,8 @@ export function DisplayMap() {
     const { coordinates } = useSelector((state) => state.location)
 
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+        libraries: ["places"]
     })
 
     useEffect(() => {
