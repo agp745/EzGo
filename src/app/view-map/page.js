@@ -8,6 +8,7 @@ export default function viewMap() {
     <main className="flex">
       <Sidebar />
       <DisplayMap />
+      <PlacesAutocomplete />
     </main>
   )
 }
