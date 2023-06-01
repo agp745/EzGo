@@ -65,3 +65,7 @@ input:focus {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: inherit;
 } */
+
+.compact-nav {
+  transition: width 1s;
+}
