@@ -1,8 +1,23 @@
+'use client'
+
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
+import { useDispatch } from "react-redux";
+import { setCoordinates } from "../../lib/reduxStore/slices/locationSlice";
+import { setStart, setEnd } from "../../lib/reduxStore/slices/routeSlice";
 
+export const PlacesAutocomplete = ({ setInputs, inputs, position }) => {
 
-export const PlacesAutocomplete = ({ setIsType, placeholder, priority }) => {
+  let placeholderText
+  if (position === 'start') {
+    placeholderText = 'enter start location'
+  } else if (position === 'end') {
+    placeholderText = 'enter end location'
+  } else {
+    placeholderText = 'position prop missing'
+  }
+
+  const dispatch = useDispatch()
 
     const {
       ready,
@@ -25,11 +40,11 @@ export const PlacesAutocomplete = ({ setIsType, placeholder, priority }) => {
     const handleInput = (e) => {
       // Update the keyword of the input element
       setValue(e.target.value);
-      if(e.target.value.length > 3 && priority ) {
-        setIsType(true)
-      } else if (e.target.value.length <= 3 && priority) {
-        setIsType(false)
-      }
+      // if(e.target.value.length > 3 && priority ) {
+      //   setIsType(true)
+      // } else if (e.target.value.length <= 3 && priority) {
+      //   setIsType(false)
+      // }
     };
   
     const handleSelect =
@@ -44,6 +59,16 @@ export const PlacesAutocomplete = ({ setIsType, placeholder, priority }) => {
         getGeocode({ address: description }).then((results) => {
           const { lat, lng } = getLatLng(results[0]);
           console.log("📍 Coordinates: ", { lat, lng });
+          setInputs(inputs += 1)
+
+          if(position === 'start') {
+            dispatch(setCoordinates({lat, lng}))
+            dispatch(setStart({lat,lng}))
+          }
+
+          if(position === 'end') {
+            dispatch(setEnd({lat, lng}))
+          }
         });
       };
   
@@ -58,7 +83,7 @@ export const PlacesAutocomplete = ({ setIsType, placeholder, priority }) => {
           <li 
             key={place_id} 
             onClick={handleSelect(suggestion)}
-            className="text-black"
+            className="text-black border-b mt-1 py-1 cursor-pointer"
           >
             <strong>{main_text}</strong> <small>{secondary_text}</small>
           </li>
@@ -66,13 +91,13 @@ export const PlacesAutocomplete = ({ setIsType, placeholder, priority }) => {
       });
   
     return (
-      <div ref={ref}>
+      <div ref={ref} className="flex flex-col w-10/12">
           <input
-          value={value}
-          onChange={handleInput}
-          disabled={!ready}
-          placeholder={placeholder}
-          className="text-slate-950"
+            value={value}
+            onChange={handleInput}
+            disabled={!ready}
+            placeholder={placeholderText}
+            className="text-slate-950 rounded px-1 drop-shadow-2xl"
           />
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
         {status === "OK" && <ul>{renderSuggestions()}</ul>}

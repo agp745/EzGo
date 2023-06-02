@@ -1,15 +1,23 @@
 'use client'
 
 import { useMemo, useState, useEffect } from "react"
-import { GoogleMap, useLoadScript, Marker, LoadScriptNext } from "@react-google-maps/api"
+import { GoogleMap, useLoadScript, Marker, LoadScriptNext, DirectionsRenderer, DirectionsService } from "@react-google-maps/api"
 import { useSelector } from "react-redux"
 import { Sidebar } from "../sidebar"
 
 function Map({ userLocation }) {
 
-    const test = {
-        lat: 44,
-        lng: -80,
+    const { start, end, loadRoute } = useSelector((state) => state.route)
+    const [response, setResponse] = useState(null)
+
+    const DirectionsServiceCallback = (response) => {
+        if (response !== null) {
+            if (response.status === 'OK') {
+                setResponse(response)
+            } else {
+                console.log('response: ', response)
+            }
+        }
     }
 
     return (
@@ -19,6 +27,29 @@ function Map({ userLocation }) {
         mapContainerClassName="w-full h-screen"
     >
         <Marker position={userLocation} />
+
+        {loadRoute &&
+            <>
+            <DirectionsService
+                options={{
+                    origin: `${start.lat},${start.lng}`,
+                    destination: `${end.lat},${end.lng}`,
+                    travelMode: 'DRIVING'
+                }}
+                callback={DirectionsServiceCallback}
+                onLoad={(direcrtionsService) => console.log('Directions Service Loaded', direcrtionsService)}
+                onUnmount={(direcrtionsService) => console.log('Directions Service Unmounted', direcrtionsService)}
+                />
+
+            <DirectionsRenderer
+                directions={response}
+                onLoad={(directionsRenderer) => console.log('DirectionsRenderer loaded', directionsRenderer)}
+                onUnmount={(directionsRenderer) => console.log('DirectionsRenderer unmounted', directionsRenderer)}
+                />
+            </>
+        }
+
+
     </GoogleMap>
     )
 }
