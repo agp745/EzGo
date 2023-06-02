@@ -2,7 +2,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocom
 import useOnclickOutside from "react-cool-onclickoutside";
 
 
-export const PlacesAutocomplete = () => {
+export const PlacesAutocomplete = ({ setIsType, placeholder, priority }) => {
 
     const {
       ready,
@@ -25,6 +25,11 @@ export const PlacesAutocomplete = () => {
     const handleInput = (e) => {
       // Update the keyword of the input element
       setValue(e.target.value);
+      if(e.target.value.length > 3 && priority ) {
+        setIsType(true)
+      } else if (e.target.value.length <= 3 && priority) {
+        setIsType(false)
+      }
     };
   
     const handleSelect =
@@ -62,13 +67,13 @@ export const PlacesAutocomplete = () => {
   
     return (
       <div ref={ref}>
-        <input
+          <input
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder="Enter start location"
+          placeholder={placeholder}
           className="text-slate-950"
-        />
+          />
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
         {status === "OK" && <ul>{renderSuggestions()}</ul>}
       </div>
