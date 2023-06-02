@@ -4,14 +4,14 @@ import { useState } from "react"
 import { PlacesAutocomplete } from "../map"
 import { HomeIcon } from '@radix-ui/react-icons'
 
-export function Sidebar() {
+export function Sidebar({width}) {
 
     const [isType, setIsType] = useState(false)
     const [sideLogo, setSideLogo] = useState(false)
 
     return (
         <div className="min-h-screen bg-gray-100 ">
-            <div className="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56 hover:bg-white hover:shadow-lg transition-all duration-500">
+            <div className={`sidebar min-h-screen ${width} overflow-hidden border-r hover:bg-white hover:shadow-lg transition-all duration-500`}>
                 <div className="flex h-screen flex-col justify-between pt-2 pb-6">
                     <div>
                         <Link href={'/'}>
@@ -28,7 +28,7 @@ export function Sidebar() {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </form>
-                            { isType && <form action="" className="relative w-auto mx-auto">
+                            {isType && <form action="" className="relative w-auto mx-auto">
                                 <PlacesAutocomplete setIsType={setIsType} placeholder={"enter end location"} priority={false}
                                     className="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-cyan-300 focus:pl-16 focus:pr-4 text-slate-950 text-sm"
                                 />

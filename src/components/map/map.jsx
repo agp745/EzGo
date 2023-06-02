@@ -25,7 +25,7 @@ function Map({ userLocation }) {
 
 const libraries = ['places']
 
-export function DisplayMap() {
+export function DisplayMap({ expandedSidebar }) {
 
     const { coordinates, isLoading } = useSelector((state) => state.location)
 
@@ -43,8 +43,17 @@ export function DisplayMap() {
     if (loadError) return <div>Failed to load Google Maps API</div>
     if (isLoaded && !isLoading) return (
         <>
-            <Sidebar />
-            <Map userLocation={coordinates} />
+            {expandedSidebar ? (
+                <>
+                    <Sidebar width={'w-56'}/>
+                    <Map userLocation={coordinates} />
+                </>
+            ) : (
+                <>
+                    <Sidebar width={'w-[3.35rem] hover:w-56'}/>
+                    <Map userLocation={coordinates} />
+                </>
+            )}
         </>
     )
     return <div>Loading...</div>

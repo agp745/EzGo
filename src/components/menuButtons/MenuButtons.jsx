@@ -13,7 +13,6 @@ export const MenuButtons = () => {
     const { coordinates , isLoading } = useSelector((state) => state.location)
 
     useEffect(() => {
-        
         geolocator()
         .then((location) => {
             dispatch(setCoordinates(location))
@@ -24,7 +23,6 @@ export const MenuButtons = () => {
     }, [])
 
     const handleCLick = () => {
-        console.log('clicked')
         geolocator()
         .then((location) => {
             dispatch(setCoordinates(location))
@@ -39,12 +37,12 @@ export const MenuButtons = () => {
     
     return (
         <div className="flex gap-5 mt-11 text-neutral-950">
-            {/* <Link href={'/'} > */}
+            <Link href={'/savings'} >
                 <button className={buttonStyles} onClick={handleCLick}>
                     <div>Check Savings</div>
                     <div>$</div>
                 </button>
-            {/* </Link> */}
+            </Link>
           
          
             <Link href={'/view-map'}>
