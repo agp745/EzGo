@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { GoogleMap, useLoadScript, Marker, LoadScriptNext, DirectionsRenderer, DirectionsService } from "@react-google-maps/api"
 import { useSelector } from "react-redux"
 import { Sidebar } from "../sidebar"
