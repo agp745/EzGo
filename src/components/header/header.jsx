@@ -3,6 +3,9 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
+import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { setStatus } from "@/src/lib/reduxStore/slices/userSlice"
 import { UserAvatar } from "../avatar"
 
 const SignedOut = () => {
@@ -37,9 +40,18 @@ const SignedIn = ({ session }) => {
 export const Header = () => {
 
     const { data: session } = useSession()
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+        if(session) {
+            dispatch(setStatus(true))
+        } else {
+            dispatch(setStatus(false))
+        }
+    }, [])
+    
     return (
-        <section className="flex justify-between p-8">
+        <section className={`flex justify-between p-8`}>
             <div className="LEFT">
                 <Image 
                     src={'/icons/logo-no-background.png'}

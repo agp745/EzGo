@@ -3,12 +3,13 @@ import Link from "next/link"
 import { useState } from "react"
 import { PlacesAutocomplete } from "../placesAutocomplete"
 import { HomeIcon, SewingPinFilledIcon, DotFilledIcon, DotsVerticalIcon, PaperPlaneIcon, DownloadIcon } from '@radix-ui/react-icons'
+import { FolderOpenIcon, } from '@heroicons/react/24/outline'
+import { FolderIcon, } from '@heroicons/react/24/solid'
 import { RouteButton } from "../routeButton"
+export function Sidebar({ width, session, route }) {
 
-export function Sidebar({width}) {
-
-    const [isType, setIsType] = useState(false)
     const [inputs, setInputs] = useState(1)
+    const [isOpen, setIsOpen] = useState(false) 
     const [sideLogo, setSideLogo] = useState(false)
 
     return (
@@ -39,21 +40,33 @@ export function Sidebar({width}) {
                                 <RouteButton />
                             }
                             <li className="min-w-max">
-                                <a href="#" className="bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path className="fill-current text-gray-300 group-hover:text-cyan-300" fillRule="evenodd" d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z" clipRule="evenodd" />
-                                        <path className="fill-current text-gray-600 group-hover:text-cyan-600" d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
-                                    </svg>
-                                    <span className="group-hover:text-gray-700">Saved Routes</span>
-                                </a>
+                                {session ? 
+                                    (<button 
+                                        className="bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600 hover:text-slate-700 transition-colors duration-75 ease-in"
+                                        onClick={() => setIsOpen(!isOpen)}    
+                                    >
+                                        {isOpen ? <FolderOpenIcon className="w-5 h-5" /> : <FolderIcon className="w-5 h-5" /> }
+                                        <span className="group-hover:text-gray-700">Saved Routes</span>
+                                    </button>) : 
+                                    (<div className="flex flex-col items-center px-4 py-3 text-gray-600 hover:text-slate-700 transition-colors duration-75 ease-in mt-16">
+                                        <div>
+                                            <Link href={`/auth/login?callbackUrl=${route}`} className="text-sm underline underline-offset-1 hover:underline-offset-2 transition-all duration-75 ease-in">Log in</Link>
+                                            <span className="text-sm font-light"> or </span>
+                                            <Link href={`/auth/signup?callbackUrl=${route}`} className="text-green-600 hover:brightness-110 underline underline-offset-1 hover:underline-offset-2 transition-all duration-75 ease-in">Sign up</Link>
+                                        </div>
+                                        <div className="font-light">to save your routes</div>
+                                    </div>) 
+                                }
                             </li>
                         </ul>
                     </div>
                     <div className="w-max -mb-3">
-                        <button className="flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
-                            <DownloadIcon width={20} height={20} />
-                            <span className="group-hover:text-gray-700">Save Route</span>
-                        </button>
+                        {session && 
+                            <button className="flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+                                <DownloadIcon width={20} height={20} />
+                                <span className="group-hover:text-gray-700">Save Route</span>
+                            </button>
+                        }
                         <a href="/" className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
                             <HomeIcon width={20} height={20} />
                             <span className="group-hover:text-gray-700">Home</span>
@@ -62,5 +75,6 @@ export function Sidebar({width}) {
                 </div>
             </div>
         </div>
+        
     )
 } 
