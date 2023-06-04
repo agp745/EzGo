@@ -42,6 +42,7 @@ export const Header = () => {
     const { data: session } = useSession()
     const dispatch = useDispatch()
 
+    //SET USER ID
     useEffect(() => {
         if(session) {
             dispatch(setStatus(true))

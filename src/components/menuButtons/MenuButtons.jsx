@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { setCoordinates, startLoading, fetchUserCoordinates } from "@/src/lib/reduxStore/slices/locationSlice";
+import { setCoordinates } from "@/src/lib/reduxStore/slices/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { geolocator } from "@/src/lib/utils/geolocator";

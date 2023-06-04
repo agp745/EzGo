@@ -87,7 +87,9 @@ export function DisplayMap({ expandedSidebar, route }) {
         }
     }, [loadError])
 
-    useEffect(() => {
+
+    //SET USER ID
+    useEffect(() => { 
         if(session) {
             dispatch(setStatus(true))
         } else {
