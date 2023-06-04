@@ -4,8 +4,9 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setStatus } from "@/src/lib/reduxStore/slices/userSlice"
 import { useSession } from "next-auth/react"
-import { GoogleMap, useLoadScript, Marker, LoadScriptNext, DirectionsRenderer, DirectionsService } from "@react-google-maps/api"
+import { GoogleMap, useLoadScript, Marker, DirectionsRenderer, DirectionsService } from "@react-google-maps/api"
 import { Sidebar } from "../sidebar"
+import { Loading } from "../loading"
 
 function Map({ userLocation }) {
 
@@ -41,13 +42,13 @@ function Map({ userLocation }) {
                 callback={DirectionsServiceCallback}
                 onLoad={(direcrtionsService) => console.log('Directions Service Loaded', direcrtionsService)}
                 onUnmount={(direcrtionsService) => console.log('Directions Service Unmounted', direcrtionsService)}
-                />
+            />
 
             <DirectionsRenderer
                 directions={response}
                 onLoad={(directionsRenderer) => console.log('DirectionsRenderer loaded', directionsRenderer)}
                 onUnmount={(directionsRenderer) => console.log('DirectionsRenderer unmounted', directionsRenderer)}
-                />
+            />
             </>
         }
 
@@ -100,6 +101,6 @@ export function DisplayMap({ expandedSidebar, route }) {
             )}
         </>
     )
-    return <div>Loading...</div>
+    return <Loading />
 }
 
