@@ -12,11 +12,21 @@ function Map({ userLocation }) {
 
     const { start, end, loadRoute } = useSelector((state) => state.route)
     const [response, setResponse] = useState(null)
+    const [routeData, setRouteData] = useState({
+        distance: {},
+        duration: {}
+    })
 
     const DirectionsServiceCallback = (response) => {
         if (response !== null) {
             if (response.status === 'OK') {
+                console.log(response)
                 setResponse(response)
+                setRouteData({
+                    distance: response.routes[0].legs[0].distance,
+                    duration: response.routes[0].legs[0].duration
+                })
+
             } else {
                 console.log('response: ', response)
             }
