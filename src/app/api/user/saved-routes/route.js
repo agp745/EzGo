@@ -14,10 +14,10 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
-    const { userId, route } = await req.json()
+    const { userId, route, travelMode } = await req.json()
 
     try {
-        const { newRoute, error } = await saveRoute(userId, route)
+        const { newRoute, error } = await saveRoute(userId, route, travelMode)
         if (error) throw new Error (error)
         return NextResponse.json({success: true, newRoute})
     } catch (err) {

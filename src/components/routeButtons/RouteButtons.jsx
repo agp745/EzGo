@@ -26,17 +26,19 @@ export const GenerateRouteButton = () => {
 export const SaveRouteButton = () => {
     
     const { userId } = useSelector((state) => state.user)
-    const { start, end } = useSelector((state) => state.route)
+    const { start, end, travelMode } = useSelector((state) => state.route)
     const [status, setStatus] = useState(null)
 
     const saveRoute = async() => {
+
         try {
             const response = await axios.post('/api/user/saved-routes', {
                 userId,
                 route: {
                     start,
                     end,
-                }
+                    travelMode,
+                },
             })
             setStatus(response.statusText)
             console.log(response)
@@ -78,7 +80,7 @@ export const GetSavedRoutesButton = () => {
     return (
         <>
         <button 
-            className="bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600 hover:text-slate-700 transition-colors duration-75 ease-in"
+            className="flex items-center gap-1 rounded-full px-4 py-3 text-gray-600 hover:text-slate-700 transition-colors duration-75 ease-in"
             onClick={handleClick}    
             >
             {isOpen ? <FolderOpenIcon className="w-5 h-5" /> : <FolderIcon className="w-5 h-5" /> }
@@ -86,7 +88,7 @@ export const GetSavedRoutesButton = () => {
         </button>
 
         {isOpen && routes && 
-            <section className='flex flex-col items-center'>
+            <section className='flex flex-col items-center h-52 overflow-y-scroll drop-shadow-xl rounded-md py-2'>
                 {routes.map((route) => {
                     return (
                         <button 
@@ -97,6 +99,7 @@ export const GetSavedRoutesButton = () => {
                             <div className='self-start w-10/12 text-left ml-1'>{route.route.start.geocode}</div>
                             <ArrowRightIcon className='w-4 h-4'/>
                             <div className='self-end w-10/12 text-right mr-1'>{route.route.end.geocode}</div>
+                            <div className='self-end w-10/12 text-right mr-1 lowercase font-light text-xs text-slate-400'>{route.route.travelMode}</div>
                         </button>
                     )
                 })}

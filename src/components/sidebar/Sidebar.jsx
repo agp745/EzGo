@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import { PlacesAutocomplete } from "../placesAutocomplete"
 import { HomeIcon, SewingPinFilledIcon, DotFilledIcon, DotsVerticalIcon } from '@radix-ui/react-icons'
 import { GenerateRouteButton, SaveRouteButton, GetSavedRoutesButton } from "../routeButtons"
@@ -11,8 +12,14 @@ import { TransportationChoice } from "../transportation"
 export function Sidebar({ width, session, route }) {
 
     const [inputs, setInputs] = useState(1)
-    const [isOpen, setIsOpen] = useState(false) 
     const [sideLogo, setSideLogo] = useState(false)
+    const { start, end } = useSelector((state) => state.route)
+
+    useEffect(() => {
+        if(start.lat && end.lat) {
+            setInputs(3)
+        } 
+    }, [start, end])
 
     return (
         <div className="min-h-screen bg-gray-100 ">
@@ -24,7 +31,7 @@ export function Sidebar({ width, session, route }) {
                                 <Image src={'/icons/logo-only.png'} alt="EzGo Logo" width={24} height={24} />
                             </div>
                         </Link>
-                        <ul className="mt-6 space-y-2 tracking-wide flex flex-col items-center gap-1">
+                        <ul className="mt-6 space-y-2 flex flex-col items-center gap-1">
                             <form action="" className="relative w-auto mx-auto flex">
                                 <DotFilledIcon color="blue" width={24} height={24} />
                                 <PlacesAutocomplete setInputs={setInputs} inputs={inputs} position={'start'}/>

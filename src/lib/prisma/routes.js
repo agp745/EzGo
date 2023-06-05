@@ -13,12 +13,13 @@ export async function getRoutes(userId) {
     }
 }
 
-export async function saveRoute(userId, route) {
+export async function saveRoute(userId, route, travelMode) {
     try {
         const newRoute = await prisma.route.create({
             data: {
                 userId,
                 route,
+                travelMode,
             }
         })
         return { newRoute }

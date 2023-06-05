@@ -6,13 +6,13 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     start: {
-        lat: 0,
-        lng: 0,
+        lat: null,
+        lng: null,
         geocode: null
     },
     end: {
-        lat: 0,
-        lng: 0,
+        lat: null,
+        lng: null,
         geocode: null
     },
     loadRoute: false,

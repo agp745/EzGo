@@ -24,49 +24,49 @@ export function TransportationChoice() {
         >
           <div className="flex items-center">
             <RadioGroup.Item
-              className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+              className="bg-white w-4 h-4 rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
               value="BICYCLING"
               id="r1"
             >
               <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" />
             </RadioGroup.Item>
-            <label className="text-black text-[15px] leading-none pl-[15px]" htmlFor="r1">
+            <label className="text-black text-sm leading-none pl-[15px]" htmlFor="r1">
               Bicycling
             </label>
           </div>
           <div className="flex items-center">
             <RadioGroup.Item
-              className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+              className="bg-white w-4 h-4 rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
               value="WALKING"
               id="r2"
             >
               <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" />
             </RadioGroup.Item>
-            <label className="text-black text-[15px] leading-none pl-[15px]" htmlFor="r2">
+            <label className="text-black text-sm leading-none pl-[15px]" htmlFor="r2">
               Walking
             </label>
           </div>
           <div className="flex items-center">
             <RadioGroup.Item
-              className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+              className="bg-white w-4 h-4 rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
               value="TRANSIT"
               id="r3"
             >
               <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" />
             </RadioGroup.Item>
-            <label className="text-black text-[15px] leading-none pl-[15px]" htmlFor="r3">
+            <label className="text-black text-sm leading-none pl-[15px]" htmlFor="r3">
               Transit
             </label>
           </div>
           <div className="flex items-center">
             <RadioGroup.Item
-              className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+              className="bg-white w-4 h-4 rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
               value="DRIVING"
               id="r3"
             >
               <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" />
             </RadioGroup.Item>
-            <label className="text-black text-[15px] leading-none pl-[15px]" htmlFor="r3">
+            <label className="text-black text-sm leading-none pl-[15px]" htmlFor="r3">
               Driving
             </label>
           </div>
