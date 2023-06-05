@@ -10,7 +10,7 @@ import { Loading } from "../loading"
 
 function Map({ userLocation }) {
 
-    const { start, end, loadRoute } = useSelector((state) => state.route)
+    const { start, end, loadRoute, travelMode } = useSelector((state) => state.route)
     const [response, setResponse] = useState(null)
     const [routeData, setRouteData] = useState({
         distance: {},
@@ -20,7 +20,7 @@ function Map({ userLocation }) {
     const DirectionsServiceCallback = (response) => {
         if (response !== null) {
             if (response.status === 'OK') {
-                console.log(response)
+                // console.log(response)
                 setResponse(response)
                 setRouteData({
                     distance: response.routes[0].legs[0].distance,
@@ -47,7 +47,7 @@ function Map({ userLocation }) {
                 options={{
                     origin: `${start.lat},${start.lng}`,
                     destination: `${end.lat},${end.lng}`,
-                    travelMode: 'DRIVING'
+                    travelMode: travelMode
                 }}
                 callback={DirectionsServiceCallback}
                 onLoad={(direcrtionsService) => console.log('Directions Service Loaded', direcrtionsService)}
