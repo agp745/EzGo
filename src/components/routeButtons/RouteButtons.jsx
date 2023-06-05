@@ -30,15 +30,19 @@ export const SaveRouteButton = () => {
     const [status, setStatus] = useState(null)
 
     const saveRoute = async() => {
-        const response = await axios.post('/api/user/saved-routes', {
-            userId,
-            route: {
-                start,
-                end,
-            }
-        })
-        setStatus(response.statusText)
-        console.log(response)
+        try {
+            const response = await axios.post('/api/user/saved-routes', {
+                userId,
+                route: {
+                    start,
+                    end,
+                }
+            })
+            setStatus(response.statusText)
+            console.log(response)
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
