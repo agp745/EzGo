@@ -8,27 +8,31 @@ import { GoogleMap, useLoadScript, Marker, DirectionsRenderer, DirectionsService
 import { Sidebar } from "../sidebar"
 import { Loading } from "../loading"
 
+const libraries = ['places']
+
 function Map({ userLocation }) {
 
     const { start, end, loadRoute } = useSelector((state) => state.route)
     const [response, setResponse] = useState(null)
+    const [count, setCount] = useState(0)
     const [routeData, setRouteData] = useState({
         distance: {},
         duration: {}
     })
 
-    const DirectionsServiceCallback = (response) => {
-        if (response !== null) {
-            if (response.status === 'OK') {
-                console.log(response)
-                setResponse(response)
+    const directionsServiceCallback = (result) => {
+        if (result !== null) {
+            if (result.status === 'OK' && count < 2) {
+                console.log(result)
+                setCount(count + 1)
+                setResponse(result)
                 setRouteData({
-                    distance: response.routes[0].legs[0].distance,
-                    duration: response.routes[0].legs[0].duration
+                    distance: result.routes[0].legs[0].distance,
+                    duration: result.routes[0].legs[0].duration
                 })
 
             } else {
-                console.log('response: ', response)
+                console.log('result: ', result)
             }
         }
     }
@@ -40,7 +44,6 @@ function Map({ userLocation }) {
         mapContainerClassName="w-full h-screen"
     >
         <Marker position={userLocation} />
-
         {loadRoute &&
             <>
             <DirectionsService
@@ -49,36 +52,32 @@ function Map({ userLocation }) {
                     destination: `${end.lat},${end.lng}`,
                     travelMode: 'DRIVING'
                 }}
-                callback={DirectionsServiceCallback}
+                callback={(result) => directionsServiceCallback(result)}
                 onLoad={(direcrtionsService) => console.log('Directions Service Loaded', direcrtionsService)}
                 onUnmount={(direcrtionsService) => console.log('Directions Service Unmounted', direcrtionsService)}
-            />
+                />
 
             <DirectionsRenderer
                 directions={response}
                 onLoad={(directionsRenderer) => console.log('DirectionsRenderer loaded', directionsRenderer)}
                 onUnmount={(directionsRenderer) => console.log('DirectionsRenderer unmounted', directionsRenderer)}
-            />
+                />
             </>
         }
-
-
     </GoogleMap>
     )
 }
-
-const libraries = ['places']
 
 export function DisplayMap({ expandedSidebar, route }) {
 
     const { coordinates, isLoading } = useSelector((state) => state.location)
     const { isLoggedIn } = useSelector((state) => state.user)
-    const dispatch = useDispatch()
     const { data: session } = useSession()
+    const dispatch = useDispatch()
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries,
+        libraries
     })
 
     useEffect(() => {
@@ -88,8 +87,8 @@ export function DisplayMap({ expandedSidebar, route }) {
     }, [loadError])
 
 
-    //SET USER ID
-    useEffect(() => { 
+    // SET USER ID
+    useEffect(() => {
         if(session) {
             dispatch(setStatus(true))
         } else {
