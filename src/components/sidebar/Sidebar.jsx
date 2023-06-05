@@ -10,7 +10,7 @@ import { TransportationChoice } from "../transportation"
 
 
 
-export function Sidebar({ width, session, route }) {
+export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) {
 
     const [inputs, setInputs] = useState(1)
     const [sideLogo, setSideLogo] = useState(false)
@@ -41,7 +41,7 @@ export function Sidebar({ width, session, route }) {
                     <div>
                         <Link href={'/'}>
                             <div className="w-max p-2.5">
-                                <Image src={'/icons/logo-only.png'} alt="EzGo Logo" width={24} height={24} />
+                                <Image src={logo} alt="EzGo Logo" width={logoWidth} height={logoHeight} />
                             </div>
                         </Link>
                         <ul className="mt-6 space-y-2 flex flex-col items-center gap-1">

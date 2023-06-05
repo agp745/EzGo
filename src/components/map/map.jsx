@@ -114,12 +114,13 @@ export function DisplayMap({ expandedSidebar, route }) {
         <>
             {expandedSidebar ? (
                 <>
-                    <Sidebar width={'w-56'} session={isLoggedIn} route={route} />
+                    {/* //ADD VERSION WITH BLACK TEXT W/H = 125 */}
+                    <Sidebar width={'w-56'} logo={'/icons/logo-only.png'} logoWidth={24} logoHeight={24} session={isLoggedIn} route={route} />
                     <Map userLocation={coordinates} route={route} />
                 </>
             ) : (
                 <>
-                    <Sidebar width={'w-[3.35rem] hover:w-56'} session={isLoggedIn} route={route}/>
+                    <Sidebar width={'w-[3.35rem] hover:w-56'} logo={'/icons/logo-only.png'} logoWidth={24} logoHeight={24} session={isLoggedIn} route={route}/>
                     <Map userLocation={coordinates} route={route} />
                 </>
             )}
