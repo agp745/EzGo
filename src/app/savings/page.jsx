@@ -1,10 +1,9 @@
 import { DisplayMap } from "../../components/map"
 
 export default function Savings() {
-    
     return (
         <main className="flex">
-            <DisplayMap expandedSidebar={true} route={'/savings'}/>
+            <DisplayMap expandedSidebar={true} route={'/savings'} />
         </main>
     )
 }

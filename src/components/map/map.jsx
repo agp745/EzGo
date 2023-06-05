@@ -7,11 +7,12 @@ import { useSession } from "next-auth/react"
 import { GoogleMap, useLoadScript, Marker, DirectionsRenderer, DirectionsService } from "@react-google-maps/api"
 import { Sidebar } from "../sidebar"
 import { Loading } from "../loading"
+import { SavingsMenu } from "../savings"
 import axios from "axios"
 
 const libraries = ['places']
 
-function Map({ userLocation }) {
+function Map({ userLocation, route }) {
 
     const { start, end, loadRoute, travelMode } = useSelector((state) => state.route)
     const [response, setResponse] = useState(null)
@@ -46,7 +47,7 @@ function Map({ userLocation }) {
     <GoogleMap
         zoom={14}
         center={userLocation}
-        mapContainerClassName="w-full h-screen"
+        mapContainerClassName="w-full h-screen relative"
     >
         <Marker position={userLocation} />
         {loadRoute &&
@@ -66,7 +67,9 @@ function Map({ userLocation }) {
                 directions={response}
                 onLoad={(directionsRenderer) => console.log('DirectionsRenderer loaded', directionsRenderer)}
                 onUnmount={(directionsRenderer) => console.log('DirectionsRenderer unmounted', directionsRenderer)}
-                />
+            />
+            {route === '/savings' && <SavingsMenu routeData={routeData} />}
+            {route === '/view-map' && <></>}
             </>
         }
     </GoogleMap>
@@ -112,12 +115,12 @@ export function DisplayMap({ expandedSidebar, route }) {
             {expandedSidebar ? (
                 <>
                     <Sidebar width={'w-56'} session={isLoggedIn} route={route} />
-                    <Map userLocation={coordinates} />
+                    <Map userLocation={coordinates} route={route} />
                 </>
             ) : (
                 <>
                     <Sidebar width={'w-[3.35rem] hover:w-56'} session={isLoggedIn} route={route}/>
-                    <Map userLocation={coordinates} />
+                    <Map userLocation={coordinates} route={route} />
                 </>
             )}
         </>
