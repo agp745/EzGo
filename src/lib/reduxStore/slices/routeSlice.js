@@ -11,7 +11,8 @@ const initialState = {
         lat: 0,
         lng: 0
     },
-    loadRoute: false
+    loadRoute: false,
+    travelMode: 'DRIVING'
 }
 
 const routeSlice = createSlice({
@@ -26,10 +27,13 @@ const routeSlice = createSlice({
         },
         loadRoute: (state) => {
             state.loadRoute = true
+        },
+        setTravelMode: (state, action) => {
+            state.travelMode = action.payload
         }
     }
 })
 
-export const { setStart, setEnd, loadRoute } = routeSlice.actions
+export const { setStart, setEnd, loadRoute, setTravelMode } = routeSlice.actions
 
 export default routeSlice.reducer

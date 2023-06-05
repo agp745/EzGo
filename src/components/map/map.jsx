@@ -12,7 +12,7 @@ const libraries = ['places']
 
 function Map({ userLocation }) {
 
-    const { start, end, loadRoute } = useSelector((state) => state.route)
+    const { start, end, loadRoute, travelMode } = useSelector((state) => state.route)
     const [response, setResponse] = useState(null)
     const [count, setCount] = useState(0)
     const [routeData, setRouteData] = useState({
@@ -50,7 +50,7 @@ function Map({ userLocation }) {
                 options={{
                     origin: `${start.lat},${start.lng}`,
                     destination: `${end.lat},${end.lng}`,
-                    travelMode: 'DRIVING'
+                    travelMode: travelMode
                 }}
                 callback={(result) => directionsServiceCallback(result)}
                 onLoad={(direcrtionsService) => console.log('Directions Service Loaded', direcrtionsService)}

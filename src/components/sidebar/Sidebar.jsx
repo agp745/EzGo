@@ -4,8 +4,11 @@ import { useState } from "react"
 import { PlacesAutocomplete } from "../placesAutocomplete"
 import { HomeIcon, SewingPinFilledIcon, DotFilledIcon, DotsVerticalIcon, PaperPlaneIcon, DownloadIcon } from '@radix-ui/react-icons'
 import { FolderOpenIcon, } from '@heroicons/react/24/outline'
-import { FolderIcon, } from '@heroicons/react/24/solid'
+import { FolderIcon } from '@heroicons/react/24/solid'
 import { RouteButton } from "../routeButton"
+import { TransportationChoice } from "../transportation"
+
+
 export function Sidebar({ width, session, route }) {
 
     const [inputs, setInputs] = useState(1)
@@ -60,6 +63,7 @@ export function Sidebar({ width, session, route }) {
                             </li>
                         </ul>
                     </div>
+                        <TransportationChoice />
                     <div className="w-max -mb-3">
                         {session && 
                             <button className="flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
