@@ -1,9 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { setStart, setEnd } from "@/src/lib/reduxStore/slices/routeSlice"
 import { PlacesAutocomplete } from "../placesAutocomplete"
-import { HomeIcon, SewingPinFilledIcon, DotFilledIcon, DotsVerticalIcon } from '@radix-ui/react-icons'
+import { HomeIcon, SewingPinFilledIcon, DotFilledIcon, DotsVerticalIcon, Cross2Icon } from '@radix-ui/react-icons'
 import { GenerateRouteButton, SaveRouteButton, GetSavedRoutesButton } from "../routeButtons"
 import { TransportationChoice } from "../transportation"
 
@@ -14,12 +15,24 @@ export function Sidebar({ width, session, route }) {
     const [inputs, setInputs] = useState(1)
     const [sideLogo, setSideLogo] = useState(false)
     const { start, end } = useSelector((state) => state.route)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if(start.lat && end.lat) {
             setInputs(3)
         } 
     }, [start, end])
+
+    const clearSearch = () => {
+        const nullRoute = {
+            lat: null,
+            lng: null,
+            geocode: null
+        }
+        setInputs(1)
+        dispatch(setStart(nullRoute))
+        dispatch(setEnd(nullRoute))
+    }
 
     return (
         <div className="min-h-screen bg-gray-100 ">
@@ -51,6 +64,13 @@ export function Sidebar({ width, session, route }) {
                                 <GenerateRouteButton />
                                 </>
                             }
+                            <button
+                                className="flex items-center gap-1 text-black text-sm font-light bg-white hover:brightness-[.98] border rounded drop-shadow-sm px-2 py-1 transition-all duration-75 ease-in active:scale-95"
+                                onClick={clearSearch}
+                            >
+                                <Cross2Icon className="text-red-600" width={20} height={20} />
+                                <div>clear</div>
+                            </button>
                             <li className="">
                                 {session ? (<GetSavedRoutesButton />) : 
                                     (<div className="flex flex-col items-center px-4 py-3 text-gray-600 hover:text-slate-700 transition-colors duration-75 ease-in mt-16">
