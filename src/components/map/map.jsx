@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { setStatus } from "@/src/lib/reduxStore/slices/userSlice"
+import { setStatus, setUserId } from "@/src/lib/reduxStore/slices/userSlice"
 import { useSession } from "next-auth/react"
 import { GoogleMap, useLoadScript, Marker, DirectionsRenderer, DirectionsService } from "@react-google-maps/api"
 import { Sidebar } from "../sidebar"
 import { Loading } from "../loading"
+import axios from "axios"
 
 const libraries = ['places']
 
@@ -86,11 +87,16 @@ export function DisplayMap({ expandedSidebar, route }) {
         }
     }, [loadError])
 
+    const getUser = async(email) => {
+        const response = await axios(`/api/user?email=${email}`)
+        return response
+    }
 
-    // SET USER ID
     useEffect(() => {
         if(session) {
             dispatch(setStatus(true))
+            getUser(session.user.email)
+            .then(res => dispatch(setUserId(res.data.user.id)))
         } else {
             dispatch(setStatus(false))
         }

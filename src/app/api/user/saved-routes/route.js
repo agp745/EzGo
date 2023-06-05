@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { getRoutes, saveRoute } from "@/src/lib/prisma/routes";
 
 export async function GET(req) {
-    const userId = await req.json()
+    const { searchParams } = new URL(req.url)
+    const userId = searchParams.get('user_id')
     try {
         const { routes, error } = await getRoutes(userId)
         if (error) throw new Error (error)
@@ -14,6 +15,7 @@ export async function GET(req) {
 
 export async function POST(req) {
     const { userId, route } = await req.json()
+
     try {
         const { newRoute, error } = await saveRoute(userId, route)
         if (error) throw new Error (error)

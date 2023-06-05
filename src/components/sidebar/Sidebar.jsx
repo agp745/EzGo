@@ -2,11 +2,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { PlacesAutocomplete } from "../placesAutocomplete"
-import { HomeIcon, SewingPinFilledIcon, DotFilledIcon, DotsVerticalIcon, PaperPlaneIcon, DownloadIcon } from '@radix-ui/react-icons'
-import { FolderOpenIcon, } from '@heroicons/react/24/outline'
-import { FolderIcon } from '@heroicons/react/24/solid'
-import { RouteButton } from "../routeButton"
+import { HomeIcon, SewingPinFilledIcon, DotFilledIcon, DotsVerticalIcon } from '@radix-ui/react-icons'
+import { GenerateRouteButton, SaveRouteButton, GetSavedRoutesButton } from "../routeButtons"
 import { TransportationChoice } from "../transportation"
+
 
 
 export function Sidebar({ width, session, route }) {
@@ -40,17 +39,10 @@ export function Sidebar({ width, session, route }) {
                                 </>
                             }
                             {inputs > 2 && 
-                                <RouteButton />
+                                <GenerateRouteButton />
                             }
                             <li className="min-w-max">
-                                {session ? 
-                                    (<button 
-                                        className="bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600 hover:text-slate-700 transition-colors duration-75 ease-in"
-                                        onClick={() => setIsOpen(!isOpen)}    
-                                    >
-                                        {isOpen ? <FolderOpenIcon className="w-5 h-5" /> : <FolderIcon className="w-5 h-5" /> }
-                                        <span className="group-hover:text-gray-700">Saved Routes</span>
-                                    </button>) : 
+                                {session ? (<GetSavedRoutesButton />) : 
                                     (<div className="flex flex-col items-center px-4 py-3 text-gray-600 hover:text-slate-700 transition-colors duration-75 ease-in mt-16">
                                         <div>
                                             <Link href={`/auth/login?callbackUrl=${route}`} className="text-sm underline underline-offset-1 hover:underline-offset-2 transition-all duration-75 ease-in">Log in</Link>
@@ -65,12 +57,7 @@ export function Sidebar({ width, session, route }) {
                     </div>
                         <TransportationChoice />
                     <div className="w-max -mb-3">
-                        {session && 
-                            <button className="flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
-                                <DownloadIcon width={20} height={20} />
-                                <span className="group-hover:text-gray-700">Save Route</span>
-                            </button>
-                        }
+                        {session && <SaveRouteButton />}
                         <a href="/" className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
                             <HomeIcon width={20} height={20} />
                             <span className="group-hover:text-gray-700">Home</span>

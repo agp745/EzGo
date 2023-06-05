@@ -15,7 +15,7 @@ export async function getRoutes(userId) {
 
 export async function saveRoute(userId, route) {
     try {
-        const newRoute = prisma.route.create({
+        const newRoute = await prisma.route.create({
             data: {
                 userId,
                 route,

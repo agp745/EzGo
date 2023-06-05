@@ -6,10 +6,12 @@ const initialState = {
     start: {
         lat: 0,
         lng: 0,
+        geocode: null
     },
     end: {
         lat: 0,
-        lng: 0
+        lng: 0,
+        geocode: null
     },
     loadRoute: false,
     travelMode: 'DRIVING'

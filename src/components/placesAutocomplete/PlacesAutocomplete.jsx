@@ -63,11 +63,19 @@ export const PlacesAutocomplete = ({ setInputs, inputs, position }) => {
 
           if(position === 'start') {
             dispatch(setCoordinates({lat, lng}))
-            dispatch(setStart({lat,lng}))
+            dispatch(setStart({
+              lat,
+              lng,
+              geocode: description
+            }))
           }
 
           if(position === 'end') {
-            dispatch(setEnd({lat, lng}))
+            dispatch(setEnd({
+              lat,
+              lng,
+              geocode: description,
+            }))
           }
         });
       };
