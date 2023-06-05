@@ -44,7 +44,7 @@ export function Sidebar({ width, session, route }) {
                                 <GenerateRouteButton />
                                 </>
                             }
-                            <li className="min-w-max">
+                            <li className="">
                                 {session ? (<GetSavedRoutesButton />) : 
                                     (<div className="flex flex-col items-center px-4 py-3 text-gray-600 hover:text-slate-700 transition-colors duration-75 ease-in mt-16">
                                         <div>

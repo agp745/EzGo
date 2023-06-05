@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { loadRoute } from "../../lib/reduxStore/slices/routeSlice"
+import { loadRoute, setStart, setEnd } from "../../lib/reduxStore/slices/routeSlice"
 import { PaperPlaneIcon, DownloadIcon, CheckIcon } from '@radix-ui/react-icons'
 import { FolderOpenIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 import { FolderIcon } from '@heroicons/react/24/solid'
@@ -57,12 +57,18 @@ export const GetSavedRoutesButton = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [routes, setRoutes] = useState(null)
     const { userId } = useSelector((state) => state.user)
+    const dispatch = useDispatch()
 
     const handleClick = async () => {
         setIsOpen(!isOpen)
         await axios(`/api/user/saved-routes?user_id=${userId}`)
         .then(res => setRoutes(res.data.routes))
-        // .then(res => console.log(res.data.routes))
+    }
+
+    const showRoute = (start, end) => {
+        dispatch(setStart(start))
+        dispatch(setEnd(end))
+        dispatch(loadRoute(true))
     }
 
     return (
@@ -79,14 +85,15 @@ export const GetSavedRoutesButton = () => {
             <section className='flex flex-col items-center'>
                 {routes.map((route) => {
                     return (
-                        <div 
+                        <button 
                         key={route.id}
-                        className='flex flex-col items-center w-full text-neutral-900 text-sm border-b border-b-gray-200 py-2'
+                        className='flex flex-col items-center w-[93%] text-neutral-900 text-sm border-b border-b-gray-200 rounded py-2 hover:shadow-xl transition-all duration-100 ease-in'
+                        onClick={() => showRoute(route.route.start, route.route.end)}
                         >
-                            <div className='self-start'>{route.route.start.geocode}</div>
+                            <div className='self-start w-10/12 text-left ml-1'>{route.route.start.geocode}</div>
                             <ArrowRightIcon className='w-4 h-4'/>
-                            <div className='self-end'>{route.route.end.geocode}</div>
-                        </div>
+                            <div className='self-end w-10/12 text-right mr-1'>{route.route.end.geocode}</div>
+                        </button>
                     )
                 })}
             </section>

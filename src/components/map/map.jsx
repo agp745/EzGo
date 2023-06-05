@@ -38,6 +38,10 @@ function Map({ userLocation }) {
         }
     }
 
+    useEffect(() => {
+        setCount(0)
+    }, [start, end, travelMode])
+
     return (
     <GoogleMap
         zoom={14}
