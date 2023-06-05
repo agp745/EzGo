@@ -39,7 +39,10 @@ export function Sidebar({ width, session, route }) {
                                 </>
                             }
                             {inputs > 2 && 
+                                <>
+                                <TransportationChoice />
                                 <GenerateRouteButton />
+                                </>
                             }
                             <li className="min-w-max">
                                 {session ? (<GetSavedRoutesButton />) : 
@@ -55,7 +58,6 @@ export function Sidebar({ width, session, route }) {
                             </li>
                         </ul>
                     </div>
-                        <TransportationChoice />
                     <div className="w-max -mb-3">
                         {session && <SaveRouteButton />}
                         <a href="/" className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">

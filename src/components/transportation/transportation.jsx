@@ -71,7 +71,6 @@ export function TransportationChoice() {
             </label>
           </div>
         </RadioGroup.Root>
-        <p className="text-black">choice of travel: {travelMode}</p>
       </form>
     )
 }
