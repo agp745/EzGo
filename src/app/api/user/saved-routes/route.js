@@ -9,7 +9,7 @@ export async function GET(req) {
         if (error) throw new Error (error)
         return NextResponse.json({success: true, routes})
     } catch (err) {
-        return NextResponse.json({success: false, error: err})
+        return NextResponse.json({success: false, error: err.message})
     }
 }
 
@@ -21,6 +21,6 @@ export async function POST(req) {
         if (error) throw new Error (error)
         return NextResponse.json({success: true, newRoute})
     } catch (err) {
-        return NextResponse.json({success: false, error: err})
+        return NextResponse.json({success: false, error: err.message})
     }
 }
