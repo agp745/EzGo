@@ -28,6 +28,8 @@ function Map({ userLocation, route }) {
                 console.log(result)
                 setCount(count + 1)
                 setResponse(result)
+                console.log('Distance:', result.routes[0].legs[0].distance.text);
+                console.log('Duration:', result.routes[0].legs[0].duration.text);
                 setRouteData({
                     distance: result.routes[0].legs[0].distance,
                     duration: result.routes[0].legs[0].duration
@@ -72,6 +74,12 @@ function Map({ userLocation, route }) {
             {route === '/view-map' && <></>}
             </>
         }
+        {routeData.distance && routeData.duration && (
+        <div className="distance-duration text-black">
+    <p>Distance: {routeData.distance.tex}</p>
+    <p>Duration: {routeData.duration.text}</p>
+        </div>
+      )}
     </GoogleMap>
     )
 }

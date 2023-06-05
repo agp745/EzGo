@@ -51,6 +51,7 @@ export const SaveRouteButton = () => {
         <button 
             className="flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
             onClick={saveRoute}
+            // onClick={()=> console.log(userId)}
         >
             {status === 'OK' ? <CheckIcon width={20} height={20} className='text-green-500' /> : <DownloadIcon width={20} height={20} />}
             <span className="group-hover:text-gray-700">Save Route</span>
