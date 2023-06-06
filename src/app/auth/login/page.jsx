@@ -76,7 +76,7 @@ export default function Login() {
                         height={35}
                     />
                     <h1 className="text-xl font-semibold mt-5">Log in to EzGo</h1>
-                    <div className="text-md font-light text-neutral-400 mt-2">Don't have an account?&nbsp;
+                    <div className="text-md font-light text-neutral-400 mt-2">Don&#39;t have an account?&nbsp;
                         <Link 
                             href='/auth/signup' 
                             className="text-blue-500 hover:brightness-125 transition-all duration-100 ease-in"

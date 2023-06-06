@@ -23,7 +23,7 @@ export default function SavedRoutes() {
     useEffect(() => {
         axios(`/api/user/saved-routes?user_id=${userId}`)
         .then(res => setRoutes(res.data.routes))
-    }, [isRouteDeleted])
+    }, [isRouteDeleted, userId])
 
     const deleteRoute = async (routeId) => {
         await axios.delete(`/api/user/saved-routes?route_id=${routeId}`)

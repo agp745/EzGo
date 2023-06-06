@@ -57,7 +57,7 @@ export const Header = () => {
         } else {
             dispatch(setStatus(false))
         }
-    }, [])
+    }, [dispatch, session])
 
     
     
