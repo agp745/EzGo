@@ -12,6 +12,7 @@ import { PlanRoute } from "../plan-route"
 import axios from "axios"
 
 const libraries = ['places']
+const version = 'weekly'
 
 function Map({ userLocation, route }) {
 
@@ -88,6 +89,7 @@ export function DisplayMap({ expandedSidebar, route }) {
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+        version,
         libraries
     })
 
@@ -110,7 +112,7 @@ export function DisplayMap({ expandedSidebar, route }) {
         } else {
             dispatch(setStatus(false))
         }
-    }, [session])
+    }, [session, dispatch])
 
     if (loadError) return <div>Failed to load Google Maps API</div>
     if (isLoaded && !isLoading) return (

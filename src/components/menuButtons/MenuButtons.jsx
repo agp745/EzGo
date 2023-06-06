@@ -20,7 +20,7 @@ export const MenuButtons = () => {
         })
         .catch((error) => console.log(error))
 
-    }, [])
+    }, [dispatch])
 
     const handleCLick = () => {
         geolocator()
