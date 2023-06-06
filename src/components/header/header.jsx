@@ -3,7 +3,11 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
+import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { setStatus, setUserId } from "@/src/lib/reduxStore/slices/userSlice"
 import { UserAvatar } from "../avatar"
+import axios from "axios"
 
 const SignedOut = () => {
     return (
@@ -37,9 +41,28 @@ const SignedIn = ({ session }) => {
 export const Header = () => {
 
     const { data: session } = useSession()
+    const dispatch = useDispatch()
 
+    const getUser = async(email) => {
+        const response = await axios(`/api/user?email=${email}`)
+        return response
+    }
+
+    //SET USER ID
+    useEffect(() => {
+        if(session) {
+            dispatch(setStatus(true))
+            getUser(session.user.email)
+            .then(res => dispatch(setUserId(res.data.user.id)))
+        } else {
+            dispatch(setStatus(false))
+        }
+    }, [])
+
+    
+    
     return (
-        <section className="flex justify-between p-8">
+        <section className={`flex justify-between p-8`}>
             <div className="LEFT">
                 <Image 
                     src={'/icons/logo-no-background.png'}

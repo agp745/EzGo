@@ -45,6 +45,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  routes        Route[]
 
   @@map("users")
 }
@@ -57,4 +58,13 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verification_tokens")
+}
+
+model Route {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @map("user_id") @db.ObjectId
+  route  Json
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("routes")
 }
