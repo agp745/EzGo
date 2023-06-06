@@ -66,10 +66,33 @@ input:focus {
   animation: hideText 0.5s ease forwards;
 }
 
+.SHOW-MAIN {
+  animation: showText 1s ease forwards;
+}
+
+.SHOW-HEADER {
+  animation: showTextDown 2s ease forwards;
+}
+
+.SHOW-FOOTER {
+  animation: showText 2s ease forwards;
+}
+
 @keyframes showText {
   0% {
       opacity: 0;
       transform: translateY(50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes showTextDown {
+  0% {
+      opacity: 0;
+      transform: translateY(-50px);
   }
   100% {
       opacity: 1;

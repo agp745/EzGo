@@ -24,7 +24,7 @@ export const Footer = () => {
     const noahGithub = 'https://github.com/NoahW52'
 
     return (
-        <footer className="fixed bottom-0 left-0 right-0 text-sm">
+        <footer className="fixed bottom-0 left-0 right-0 text-sm SHOW-FOOTER">
             <a href='https://github.com/agp745/EzGo' target='blank' className='fixed bottom-0 left-0 pb-2 pl-2'>
                 <Image 
                     src={'/icons/white-github-icon.svg'}
