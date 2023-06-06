@@ -1,9 +1,9 @@
-
-
 import { setTravelMode } from "@/src/lib/reduxStore/slices/routeSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { FaCar, FaWalking, FaBicycle, FaBus } from 'react-icons/fa';
 import React from 'react';
 import * as RadioGroup from '@radix-ui/react-radio-group';
+
 export function TransportationChoice() {
 
   const travelMode = useSelector((state) => state.route.travelMode)
@@ -17,7 +17,7 @@ export function TransportationChoice() {
     return (
         <form>
         <RadioGroup.Root
-          className="flex flex-col gap-2.5"
+          className="flex gap-2.5"
           value={travelMode}
           aria-label="View density"
           onValueChange={handleButton}
@@ -30,8 +30,8 @@ export function TransportationChoice() {
             >
               <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" />
             </RadioGroup.Item>
-            <label className="text-black text-sm leading-none pl-[15px]" htmlFor="r1">
-              Bicycling
+            <label className="text-black text-lg leading-none pl-[15px]" htmlFor="r1">
+              <FaBicycle className="text-4xl" />
             </label>
           </div>
           <div className="flex items-center">
@@ -42,8 +42,8 @@ export function TransportationChoice() {
             >
               <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" />
             </RadioGroup.Item>
-            <label className="text-black text-sm leading-none pl-[15px]" htmlFor="r2">
-              Walking
+            <label className="text-black text-lg leading-none pl-[15px]" htmlFor="r2">
+            <FaWalking className="text-4xl" />
             </label>
           </div>
           <div className="flex items-center">
@@ -54,11 +54,14 @@ export function TransportationChoice() {
             >
               <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" />
             </RadioGroup.Item>
-            <label className="text-black text-sm leading-none pl-[15px]" htmlFor="r3">
-              Transit
+            <label className="text-black text-lg leading-none pl-[15px]" htmlFor="r3">
+            <FaBus className="text-4xl" />
             </label>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center flex-col">
+            <label className="text-black text-lg leading-none pl-[15px]" htmlFor="r3">
+            <FaCar className="text-4xl" />
+            </label>
             <RadioGroup.Item
               className="bg-white w-4 h-4 rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
               value="DRIVING"
@@ -66,12 +69,10 @@ export function TransportationChoice() {
             >
               <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" />
             </RadioGroup.Item>
-            <label className="text-black text-sm leading-none pl-[15px]" htmlFor="r3">
-              Driving
-            </label>
           </div>
         </RadioGroup.Root>
       </form>
+
     )
 }
 

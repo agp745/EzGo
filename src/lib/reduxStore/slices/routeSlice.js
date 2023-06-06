@@ -16,7 +16,7 @@ const initialState = {
         geocode: null
     },
     loadRoute: false,
-    travelMode: 'DRIVING'
+    travelMode: 'BICYCLING'
 }
 
 const routeSlice = createSlice({

@@ -6,14 +6,13 @@ import { setStart, setEnd } from "@/src/lib/reduxStore/slices/routeSlice"
 import { PlacesAutocomplete } from "../placesAutocomplete"
 import { HomeIcon, SewingPinFilledIcon, DotFilledIcon, DotsVerticalIcon, Cross2Icon } from '@radix-ui/react-icons'
 import { GenerateRouteButton, SaveRouteButton, GetSavedRoutesButton } from "../routeButtons"
-import { TransportationChoice } from "../transportation"
+
 
 
 
 export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) {
 
     const [inputs, setInputs] = useState(1)
-    const [isHovered, setIsHovered] = useState(false)
     const { start, end } = useSelector((state) => state.route)
     const dispatch = useDispatch()
 
@@ -36,11 +35,7 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
 
     return (
         <div className="min-h-screen bg-gray-100 ">
-            <div 
-                className={`sidebar min-h-screen ${width} overflow-hidden border-r hover:bg-white hover:shadow-lg transition-all duration-500`}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
+            <div className={`sidebar min-h-screen ${width} overflow-hidden border-r hover:bg-white hover:shadow-lg transition-all duration-500`}>
                 <div className="flex h-screen flex-col justify-between pt-2 pb-6">
                     <div>
                         <Link href={'/'}>
@@ -48,8 +43,8 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
                                 <Image src={logo} alt="EzGo Logo" width={logoWidth} height={logoHeight} />
                             </div>
                         </Link>
-                        {route === '/view-map' && isHovered || route === '/savings' &&
-                        <ul className={`mt-6 space-y-2 flex flex-col items-center gap-1 ${isHovered && route === '/view-map' || route === '/savings' ? 'SHOW-SIDEBAR' : 'HIDE-SIDEBAR'}`}>
+                        {route === '/view-map' ? <h1 className="text-lg text-neutral-700 font-semibold text-center">Plan Route</h1> : <h1 className="text-lg text-neutral-700 font-semibold text-center">Green Savings</h1>}
+                        <ul className='mt-6 space-y-2 flex flex-col items-center gap-1 SHOW-SIDEBAR' >
                             <form action="" className="relative w-auto mx-auto flex">
                                 <DotFilledIcon color="blue" width={24} height={24} />
                                 <PlacesAutocomplete setInputs={setInputs} inputs={inputs} position={'start'}/>
@@ -65,7 +60,6 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
                             }
                             {inputs > 2 && 
                                 <>
-                                <TransportationChoice />
                                 <GenerateRouteButton />
                                 </>
                             }
@@ -89,7 +83,6 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
                                 }
                             </li>
                         </ul>
-                        }
                     </div>
                     <div className="w-max -mb-3">
                         {session && <SaveRouteButton />}

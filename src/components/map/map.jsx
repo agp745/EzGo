@@ -8,6 +8,7 @@ import { GoogleMap, useLoadScript, Marker, DirectionsRenderer, DirectionsService
 import { Sidebar } from "../sidebar"
 import { Loading } from "../loading"
 import { SavingsMenu } from "../savings"
+import { PlanRoute } from "../plan-route"
 import axios from "axios"
 
 const libraries = ['places']
@@ -28,6 +29,8 @@ function Map({ userLocation, route }) {
                 console.log(result)
                 setCount(count + 1)
                 setResponse(result)
+                console.log('Distance:', result.routes[0].legs[0].distance.text);
+                console.log('Duration:', result.routes[0].legs[0].duration.text);
                 setRouteData({
                     distance: result.routes[0].legs[0].distance,
                     duration: result.routes[0].legs[0].duration
@@ -69,7 +72,7 @@ function Map({ userLocation, route }) {
                 onUnmount={(directionsRenderer) => console.log('DirectionsRenderer unmounted', directionsRenderer)}
             />
             {route === '/savings' && <SavingsMenu routeData={routeData} />}
-            {route === '/view-map' && <></>}
+            {route === '/view-map' && <PlanRoute routeData={routeData} />}
             </>
         }
     </GoogleMap>
@@ -120,7 +123,8 @@ export function DisplayMap({ expandedSidebar, route }) {
                 </>
             ) : (
                 <>
-                    <Sidebar width={'w-[3.35rem] hover:w-56'} logo={'/icons/logo-only.png'} logoWidth={24} logoHeight={24} session={isLoggedIn} route={route}/>
+                    {/* //HOVER STYLES = 'w-[3.35rem] hover:w-56 */}
+                    <Sidebar width={'w-56'} logo={'/icons/logo-only.png'} logoWidth={24} logoHeight={24} session={isLoggedIn} route={route}/>
                     <Map userLocation={coordinates} route={route} />
                 </>
             )}
