@@ -34,3 +34,7 @@ If you would like to contribute to the EzGo project, please follow these steps:
 5. Create a pull request to merge your changes with the main branch.
 
 Thank you for considering contributing to the EzGo project. We appreciate your support in making commuting more sustainable and efficient!
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
