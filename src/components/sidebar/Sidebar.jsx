@@ -13,7 +13,7 @@ import { TransportationChoice } from "../transportation"
 export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) {
 
     const [inputs, setInputs] = useState(1)
-    const [sideLogo, setSideLogo] = useState(false)
+    const [isHovered, setIsHovered] = useState(false)
     const { start, end } = useSelector((state) => state.route)
     const dispatch = useDispatch()
 
@@ -36,7 +36,11 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
 
     return (
         <div className="min-h-screen bg-gray-100 ">
-            <div className={`sidebar min-h-screen ${width} overflow-hidden border-r hover:bg-white hover:shadow-lg transition-all duration-500`}>
+            <div 
+                className={`sidebar min-h-screen ${width} overflow-hidden border-r hover:bg-white hover:shadow-lg transition-all duration-500`}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
                 <div className="flex h-screen flex-col justify-between pt-2 pb-6">
                     <div>
                         <Link href={'/'}>
@@ -44,7 +48,8 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
                                 <Image src={logo} alt="EzGo Logo" width={logoWidth} height={logoHeight} />
                             </div>
                         </Link>
-                        <ul className="mt-6 space-y-2 flex flex-col items-center gap-1">
+                        {route === '/view-map' && isHovered && 
+                        <ul className={`mt-6 space-y-2 flex flex-col items-center gap-1 ${isHovered ? 'SHOW-SIDEBAR' : 'HIDE-SIDEBAR'}`}>
                             <form action="" className="relative w-auto mx-auto flex">
                                 <DotFilledIcon color="blue" width={24} height={24} />
                                 <PlacesAutocomplete setInputs={setInputs} inputs={inputs} position={'start'}/>
@@ -84,6 +89,7 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
                                 }
                             </li>
                         </ul>
+                        }
                     </div>
                     <div className="w-max -mb-3">
                         {session && <SaveRouteButton />}

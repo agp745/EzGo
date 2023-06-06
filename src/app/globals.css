@@ -54,18 +54,36 @@ input:focus {
   /* Add any other necessary reset styles */
 }
 
-/* .DISABLED {
-  position: relative;
-}
-
-.DISABLED::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: inherit;
-} */
-
 .compact-nav {
   transition: width 1s;
+}
+
+.SHOW-SIDEBAR {
+  animation: showText 0.5s ease forwards;
+}
+
+.HIDE-SIDEBAR {
+  animation: hideText 0.5s ease forwards;
+}
+
+@keyframes showText {
+  0% {
+      opacity: 0;
+      transform: translateY(50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes hideText {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
 }
