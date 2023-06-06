@@ -31,7 +31,12 @@ export async function saveRoute(userId, route, travelMode) {
 
 export async function deleteRoute(routeId) {
     try {
-        
+        const deletedRoute = await prisma.route.delete({
+            where: {
+                id: routeId,
+            }
+        })
+        return { deletedRoute }
 
     } catch (error) {
         return { error }

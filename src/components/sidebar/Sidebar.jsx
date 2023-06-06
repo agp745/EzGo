@@ -48,8 +48,8 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
                                 <Image src={logo} alt="EzGo Logo" width={logoWidth} height={logoHeight} />
                             </div>
                         </Link>
-                        {route === '/view-map' && isHovered && 
-                        <ul className={`mt-6 space-y-2 flex flex-col items-center gap-1 ${isHovered ? 'SHOW-SIDEBAR' : 'HIDE-SIDEBAR'}`}>
+                        {route === '/view-map' && isHovered || route === '/savings' &&
+                        <ul className={`mt-6 space-y-2 flex flex-col items-center gap-1 ${isHovered && route === '/view-map' || route === '/savings' ? 'SHOW-SIDEBAR' : 'HIDE-SIDEBAR'}`}>
                             <form action="" className="relative w-auto mx-auto flex">
                                 <DotFilledIcon color="blue" width={24} height={24} />
                                 <PlacesAutocomplete setInputs={setInputs} inputs={inputs} position={'start'}/>

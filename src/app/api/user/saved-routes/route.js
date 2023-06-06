@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getRoutes, saveRoute } from "@/src/lib/prisma/routes";
+import { getRoutes, saveRoute, deleteRoute } from "@/src/lib/prisma/routes";
 
 export async function GET(req) {
     const { searchParams } = new URL(req.url)
@@ -25,6 +25,14 @@ export async function POST(req) {
     }
 }
 
-// export async function DELETE(req) {
-//     const { routeId } = await 
-// }
+export async function DELETE(req) {
+    const { searchParams } = new URL(req.url)
+    const routeId = searchParams.get('route_id')
+    try {
+        const { deletedRoute, error } = await deleteRoute(routeId)
+        if (error) throw new Error (error)
+        return NextResponse.json({success: true, deletedRoute})
+    } catch (err) {
+        return NextResponse.json({success: false, error: err.message})
+    }
+}

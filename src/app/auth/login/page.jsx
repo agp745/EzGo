@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { signIn } from "next-auth/react"
 
-function HomeButton() {
+export function HomeButton() {
     return (
         <div className="fixed top-0 left-0 ml-2 mt-2 text-sm">
             <Link href={'/'}>
