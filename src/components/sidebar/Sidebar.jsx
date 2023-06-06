@@ -6,7 +6,7 @@ import { setStart, setEnd } from "@/src/lib/reduxStore/slices/routeSlice"
 import { PlacesAutocomplete } from "../placesAutocomplete"
 import { HomeIcon, SewingPinFilledIcon, DotFilledIcon, DotsVerticalIcon, Cross2Icon } from '@radix-ui/react-icons'
 import { GenerateRouteButton, SaveRouteButton, GetSavedRoutesButton } from "../routeButtons"
-import { TransportationChoice } from "../transportation"
+
 
 
 
@@ -65,7 +65,6 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
                             }
                             {inputs > 2 && 
                                 <>
-                                <TransportationChoice />
                                 <GenerateRouteButton />
                                 </>
                             }

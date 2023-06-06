@@ -8,6 +8,7 @@ import { GoogleMap, useLoadScript, Marker, DirectionsRenderer, DirectionsService
 import { Sidebar } from "../sidebar"
 import { Loading } from "../loading"
 import { SavingsMenu } from "../savings"
+import { PlanRoute } from "../plan-route"
 import axios from "axios"
 
 const libraries = ['places']
@@ -71,15 +72,9 @@ function Map({ userLocation, route }) {
                 onUnmount={(directionsRenderer) => console.log('DirectionsRenderer unmounted', directionsRenderer)}
             />
             {route === '/savings' && <SavingsMenu routeData={routeData} />}
-            {route === '/view-map' && <></>}
+            {route === '/view-map' && <PlanRoute routeData={routeData} />}
             </>
         }
-        {routeData.distance && routeData.duration && (
-        <div className="distance-duration text-black">
-    <p>Distance: {routeData.distance.tex}</p>
-    <p>Duration: {routeData.duration.text}</p>
-        </div>
-      )}
     </GoogleMap>
     )
 }
