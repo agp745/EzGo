@@ -44,7 +44,7 @@ export function Sidebar({ width, session, route, logo, logoWidth, logoHeight }) 
                 <div className="flex h-screen flex-col justify-between pt-2 pb-6">
                     <div>
                         <Link href={'/'}>
-                            <div className="w-max p-2.5">
+                            <div className="w-max p-2.5 ml-1" >
                                 <Image src={logo} alt="EzGo Logo" width={logoWidth} height={logoHeight} />
                             </div>
                         </Link>

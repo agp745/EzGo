@@ -28,3 +28,12 @@ export async function saveRoute(userId, route, travelMode) {
         return { error }
     }
 }
+
+export async function deleteRoute(routeId) {
+    try {
+        
+
+    } catch (error) {
+        return { error }
+    }
+}

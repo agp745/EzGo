@@ -1,4 +1,5 @@
 import * as Popover from '@radix-ui/react-popover';
+import Link from 'next/link';
 import { Cross2Icon, ArrowRightIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons'
 import { signOut } from 'next-auth/react';
 import { DeleteAlert } from '../deleteAlert';
@@ -27,10 +28,13 @@ export const AvatarPopover = ({ children, session }) => (
         <div>Account</div>
         <PersonIcon />
       </div>
-      <div className="text-[13px] text-violet11 flex items-center gap-1 h-[25px] px-[10px] relative select-none pl-5 outline-none hover:brightness-125">
+      <Link
+        href={'/saved-routes'}
+        className="text-[13px] text-violet11 flex items-center gap-1 h-[25px] px-[10px] relative select-none pl-5 outline-none hover:brightness-125"
+      >
         <div>Saved Routes</div>
         <RocketIcon />
-      </div>
+      </Link>
       <button 
         className="text-[13px] text-violet11 flex items-center gap-1 h-[25px] px-[10px] relative select-none pl-5 outline-none hover:brightness-125"
         onClick={() => signOut()}

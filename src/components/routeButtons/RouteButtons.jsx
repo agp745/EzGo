@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { loadRoute, setStart, setEnd } from "../../lib/reduxStore/slices/routeSlice"
 import { PaperPlaneIcon, DownloadIcon, CheckIcon } from '@radix-ui/react-icons'
