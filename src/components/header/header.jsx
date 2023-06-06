@@ -62,7 +62,7 @@ export const Header = () => {
     
     
     return (
-        <section className={`flex justify-between p-8`}>
+        <section className={`flex justify-between p-8 SHOW-HEADER`}>
             <div className="LEFT">
                 <Image 
                     src={'/icons/logo-no-background.png'}

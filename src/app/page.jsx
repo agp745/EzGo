@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main>
       <Header/>
-      <section className="flex justify-center mt-20 text-center">
+      <section className="flex justify-center mt-20 text-center SHOW-MAIN">
         <div className="WRAPPER max-w-3xl flex flex-col items-center gap-1">
         
         <h1 className="text-gray-300 text-7xl font-bold ">Unlock the power of sustainable and smarter commutes</h1>
