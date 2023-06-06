@@ -1,34 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EzGo
 
-## Getting Started
+Unlock the power of sustainable and smarter commutes.
 
-First, run the development server:
+![EzGo Logo](/public/icons/logo-no-background.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Project Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+EzGo is a capstone project aimed at providing users with a platform to plan their commutes using eco-friendly modes of transportation. It also allows users to check the cost, time, and environmental impact savings associated with not driving. Additionally, the platform offers a login/register feature to enable users to save and manage their routes conveniently.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+To learn more about the project and access the live version, visit the [EzGo website](https://ezgo.vercel.app).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Developers
 
-## Learn More
+- Alex Perez: [Portfolio](https://alexgp-portfolio.vercel.app/)
+- Noah Wright: [GitHub](https://github.com/NoahW52)
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Plan a Route:** Users can easily plan their commutes by selecting eco-friendly modes of transportation such as transit, biking, and walking.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Check Savings:** Users have the ability to input their commutes and view how much money, time, and CO2 emissions they can save by opting for sustainable transportation alternatives instead of driving.
 
-## Deploy on Vercel
+- **Login/Register:** To enhance user experience and enable route management, the platform provides a login/register functionality. Users can sign up using their Google account or email address.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you would like to contribute to the EzGo project, please follow these steps:
+
+1. Clone or fork the repository to your local machine.
+2. Create your own branch to work on your changes.
+3. Implement the desired features or fixes in your branch.
+4. Push your branch to the repository.
+5. Create a pull request to merge your changes with the main branch.
+
+Thank you for considering contributing to the EzGo project. We appreciate your support in making commuting more sustainable and efficient!
